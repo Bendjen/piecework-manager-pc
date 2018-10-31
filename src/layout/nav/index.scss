@@ -1,0 +1,17 @@
+.nav{
+  height: 100%;
+  position: fixed;
+  right: 40px;
+  ul{
+    height: 100%;
+    list-style: none;
+    li{
+      padding: 10px;
+      cursor: pointer;
+      &:hover{
+        transform: scale(1.2,1.2);
+        transition: all .3s ease;
+      }
+    }
+  }
+}
