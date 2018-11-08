@@ -1,6 +1,9 @@
 <template>
   <div id="app">
     <Nav></Nav>
+    <div class='container'>
+        <router-view></router-view>
+    </div>
   </div>
 </template>
 <style lang="scss" src='./index.scss' scoped ></style>
