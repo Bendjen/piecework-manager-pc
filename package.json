@@ -10,6 +10,7 @@
   "dependencies": {
     "element-ui": "^2.4.5",
     "flex.css": "^1.1.7",
+    "viser-vue": "^2.4.1",
     "vue": "^2.5.17",
     "vue-property-decorator": "^7.2.0",
     "vue-router": "^3.0.1"

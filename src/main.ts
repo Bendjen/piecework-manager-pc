@@ -1,7 +1,10 @@
 import Vue from 'vue'
-import App from './/app/index.vue'
+import App from './app/index.vue'
 import router from './router'
 import 'flex.css'
+import ViserVue from 'viser-vue'
+
+Vue.use(ViserVue)
 
 Vue.config.productionTip = false
 
