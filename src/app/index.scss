@@ -5,10 +5,18 @@
   text-align: center;
   color: #2c3e50;
   height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
 }
 
-.container{
-    margin: 100px;
-    width: 85%;
-    border: 1px solid black;
+.container {
+  margin: 100px;
+  width: 85%;
+  height: 85%;
+  overflow: auto;
+  position: relative;
+  overflow: auto;
 }
+

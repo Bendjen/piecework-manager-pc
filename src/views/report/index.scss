@@ -1,0 +1,43 @@
+.el-carousel__item h3 {
+  color: #475669;
+  font-size: 14px;
+  opacity: 0.75;
+  line-height: 200px;
+  margin: 0;
+}
+
+.el-carousel__item:nth-child(2n) {
+  background-color: #99a9bf;
+}
+
+.el-carousel__item:nth-child(2n + 1) {
+  background-color: #d3dce6;
+}
+
+.el-table--enable-row-transition .el-table__body td{
+    padding: 0!important;
+}
+
+.headLine {
+  padding: 40px 120px;
+  p {
+    padding: 20px;
+    margin-left: 60px;
+    text-align: center;
+    font-size: 24px;
+  }
+}
+
+.cellInput {
+  border: none;
+  background:none;
+  outline:none;
+  text-align: center;
+  width: 60px;
+  height: 40px;
+  font-size: 16px;
+  &:focus {
+    border: none;
+    background:none;
+  }
+}
