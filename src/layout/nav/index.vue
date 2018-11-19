@@ -1,6 +1,6 @@
 <template>
   <div class="nav">
-    <ul flex='dir:top main:center cross:center'>
+    <div flex='dir:top main:center cross:center' class="listContainer">
       <router-link flex='dir:top main:center cross:center' to="staff">
         <img src="@/assets/nav/证件.png" ><p>员工</p>
       </router-link>
@@ -13,7 +13,7 @@
       <router-link flex='dir:top main:center cross:center' to="staff">
         <img src="@/assets/nav/新消息.png" ><p>结算</p>
       </router-link>
-    </ul>
+    </div>
   </div>
 </template>
 

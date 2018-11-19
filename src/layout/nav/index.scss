@@ -2,12 +2,14 @@
   height: 100%;
   position: fixed;
   right: 40px;
-  ul{
+  .listContainer{
     height: 100%;
     list-style: none;
-    li{
+    a{
       padding: 10px;
       cursor: pointer;
+      text-decoration: none;
+      color:#2c3e50;
       &:hover{
         transform: scale(1.2,1.2);
         transition: all .3s ease;
