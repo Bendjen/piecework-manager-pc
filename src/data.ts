@@ -1,39 +1,39 @@
 export default {
   'STAFF_LIST': [
-            { 'name': '费广翠', 'time': 1533999690936 },
-            { 'name': '谢芳', 'time': 1533999700602 },
-            { 'name': '李凤珍', 'time': 1533999708070 },
-            { 'name': '李开梅', 'time': 1533999719814 },
-            { 'name': '吕红梅', 'time': 1533999734657 },
-            { 'name': '肖阿芳', 'time': 1533999747572 },
-            { 'name': '谢静', 'time': 1533999757735 },
-            { 'name': '陆芳', 'time': 1533999774979 },
-            { 'name': '牟小梅', 'time': 1533999800797 },
-            { 'name': '邓小芳', 'time': 1533999812538 },
-            { 'name': '李海英', 'time': 1533999830152 },
-            { 'name': '李大妹', 'time': 1533999838213 },
-            { 'name': '杨新姣', 'time': 1533999875118 },
-            { 'name': '邹小丽', 'time': 1533999894156 },
-            { 'name': '杨雪榕', 'time': 1533999915706 },
-            { 'name': '罗菊香', 'time': 1533999928844 },
-            { 'name': '刘术英', 'time': 1533999944723 },
-            { 'name': '陈群英', 'time': 1533999955120 },
-            { 'name': '郑秀芳', 'time': 1533999965731 },
-            { 'name': '全小丽', 'time': 1533999971495 },
-            { 'name': '许丽莉', 'time': 1533999989667 },
-            { 'name': '黄婷婷', 'time': 1533999997449 },
-            { 'name': '刘莹', 'time': 1534000012639 },
-            { 'name': '王点琴', 'time': 1534000021049 },
-            { 'name': '张琼', 'time': 1534000026934 },
-            { 'name': '苏娟', 'time': 1534000038108 },
-            { 'name': '蔡秀容', 'time': 1534000052467 },
-            { 'name': '陈莲金', 'time': 1534000071475 },
-            { 'name': '魏建芬', 'time': 1534000088704 },
-            { 'name': '魏兴碧', 'time': 1534000118441 },
-            { 'name': '张亚利', 'time': 1534000126650 },
-            { 'name': '曾丽萍', 'time': 1534007356669 },
-            { 'name': '云', 'time': 1534007371858 },
-            { 'name': '惠琴', 'time': 1536244825231 }
+            { 'name': '费广翠', 'time': 1533999690936 ,key: 'fgc' },
+            { 'name': '谢芳', 'time': 1533999700602 ,key: 'xf' },
+            { 'name': '李凤珍', 'time': 1533999708070 ,key: 'lfz' },
+            { 'name': '李开梅', 'time': 1533999719814 ,key: 'lkm' },
+            { 'name': '吕红梅', 'time': 1533999734657 ,key: 'lhm' },
+            { 'name': '肖阿芳', 'time': 1533999747572 ,key: 'xaf' },
+            { 'name': '谢静', 'time': 1533999757735 ,key: 'lj' },
+            { 'name': '陆芳', 'time': 1533999774979 ,key: 'lf' },
+            { 'name': '牟小梅', 'time': 1533999800797 ,key: 'mxm' },
+            { 'name': '邓小芳', 'time': 1533999812538 ,key: 'dxf' },
+            { 'name': '李海英', 'time': 1533999830152 ,key: 'lhy' },
+            { 'name': '李大妹', 'time': 1533999838213 ,key: 'ldm' },
+            { 'name': '杨新姣', 'time': 1533999875118 ,key: 'yxj' },
+            { 'name': '邹小丽', 'time': 1533999894156 ,key: 'zxl' },
+            { 'name': '杨雪榕', 'time': 1533999915706 ,key: 'yxr' },
+            { 'name': '罗菊香', 'time': 1533999928844 ,key: 'ljx' },
+            { 'name': '刘术英', 'time': 1533999944723 ,key: 'lsy' },
+            { 'name': '陈群英', 'time': 1533999955120 ,key: 'cqy' },
+            { 'name': '郑秀芳', 'time': 1533999965731 ,key: 'zxf' },
+            { 'name': '全小丽', 'time': 1533999971495 ,key: 'qxl' },
+            { 'name': '许丽莉', 'time': 1533999989667 ,key: 'xll' },
+            { 'name': '黄婷婷', 'time': 1533999997449 ,key: 'htt' },
+            { 'name': '刘莹', 'time': 1534000012639 ,key: 'ly' },
+            { 'name': '王点琴', 'time': 1534000021049 ,key: 'wdq' },
+            { 'name': '张琼', 'time': 1534000026934 ,key: 'zq' },
+            { 'name': '苏娟', 'time': 1534000038108 ,key: 'sj' },
+            { 'name': '蔡秀容', 'time': 1534000052467 ,key: 'cxr' },
+            { 'name': '陈莲金', 'time': 1534000071475 ,key: 'clj' },
+            { 'name': '魏建芬', 'time': 1534000088704 ,key: 'wjf' },
+            { 'name': '魏兴碧', 'time': 1534000118441 ,key: 'wxb' },
+            { 'name': '张亚利', 'time': 1534000126650 ,key: 'zyl' },
+            { 'name': '曾丽萍', 'time': 1534007356669 ,key: 'zlp' },
+            { 'name': '云', 'time': 1534007371858,key: 'y' },
+            { 'name': '惠琴', 'time': 1536244825231 ,key: 'hq' }
   ],
   'ITEM_TYPE_LIST': [
             { 'name': '2792', 'time': 1534000202815, 'price': 0.0075 },
@@ -287,6 +287,71 @@ export default {
       'staff': '杨新姣',
       'action': 'PIECE_RECORD',
       'actionName': '员工记单'
+    }
+  ],
+  'EXPORT_GOOD': [
+    {
+      'type': '2766',
+      'num': 17,
+      'time': 1535554553294,
+      'action': 'GOODS_EXPORT',
+      'actionName': '出货'
+    },
+    {
+      'type': '新产品',
+      'num': 0.25,
+      'time': 1535554565124,
+      'action': 'GOODS_EXPORT',
+      'actionName': '出货'
+    },
+    {
+      'type': '2767',
+      'num': 18,
+      'time': 1535554599336,
+      'action': 'GOODS_EXPORT',
+      'actionName': '出货'
+    },
+    {
+      'type': '603(片片)',
+      'num': 17.55,
+      'time': 1535637289952,
+      'action': 'GOODS_EXPORT',
+      'actionName': '出货'
+    },
+    {
+      'type': '602(片片)',
+      'num': 7.92,
+      'time': 1535637320317,
+      'action': 'GOODS_EXPORT',
+      'actionName': '出货'
+    },
+    {
+      'type': '007(片片)',
+      'num': 10.44,
+      'time': 1535637335159,
+      'action': 'GOODS_EXPORT',
+      'actionName': '出货'
+    },
+    {
+      'type': '006(小片片)',
+      'num': 21.6,
+      'time': 1535637350886,
+      'action': 'GOODS_EXPORT',
+      'actionName': '出货'
+    },
+    {
+      'type': '2763',
+      'num': 24.75,
+      'time': 1535637459155,
+      'action': 'GOODS_EXPORT',
+      'actionName': '出货'
+    },
+    {
+      'type': '2792',
+      'num': 24.6,
+      'time': 1535637476220,
+      'action': 'GOODS_EXPORT',
+      'actionName': '出货'
     }
   ]
 }

@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from './views/home/index.vue'
 import Employee from './views/employee/index.vue'
 import Record from './views/record/index.vue'
+import Comparison from './views/comparison/index.vue'
 
 Vue.use(Router)
 
@@ -29,6 +30,11 @@ export default new Router({
       path: '/record',
       name: 'record',
       component: Record
+    },
+    {
+      path: '/comparison',
+      name: 'comparison',
+      component: Comparison
     }
   ]
 })

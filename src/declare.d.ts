@@ -9,5 +9,6 @@ export interface IRecord {
 
 export interface IStaff {
   name: string,
-  time: number | string
+  time: number | string,
+  key: string
 }

@@ -3,9 +3,10 @@ import App from './app/index.vue'
 import router from './router'
 import 'flex.css'
 import ViserVue from 'viser-vue'
+import NP from 'number-precision'
 
 Vue.use(ViserVue)
-
+Vue.prototype.$NP = NP
 Vue.config.productionTip = false
 
 new Vue({
@@ -16,8 +17,6 @@ new Vue({
 // 声明全局方法
 declare module 'vue/types/vue' {
   interface Vue {
-    $Message: any,
-    $Modal: any,
-    $Confirm: any
+    $NP: any
   }
 }

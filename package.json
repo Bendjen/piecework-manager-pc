@@ -8,8 +8,10 @@
     "inspect": "vue-cli-service inspect"
   },
   "dependencies": {
+    "@antv/data-set": "^0.10.1",
     "element-ui": "^2.4.5",
     "flex.css": "^1.1.7",
+    "number-precision": "^1.2.0",
     "viser-vue": "^2.4.1",
     "vue": "^2.5.17",
     "vue-property-decorator": "^7.2.0",
