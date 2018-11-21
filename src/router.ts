@@ -4,6 +4,7 @@ import Home from './views/home/index.vue'
 import Employee from './views/employee/index.vue'
 import Record from './views/record/index.vue'
 import Comparison from './views/comparison/index.vue'
+import Delivery from './views/delivery/index.vue'
 
 Vue.use(Router)
 
@@ -30,6 +31,11 @@ export default new Router({
       path: '/record',
       name: 'record',
       component: Record
+    },
+    {
+      path: '/delivery',
+      name: 'delivery',
+      component: Delivery
     },
     {
       path: '/comparison',

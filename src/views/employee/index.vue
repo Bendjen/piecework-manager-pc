@@ -9,7 +9,7 @@
           <p><span>工种：</span><span>034、054、45</span></p>
         </div>
       </div>
-      <v-chart :forceFit="true" :height='500' style='width:650px;height:100%;margin-top:50px;' :data="data" :scale="scale">
+      <v-chart :forceFit="true" :height='450' style='width:600px;height:100%;margin-top:50px;' :data="data" :scale="scale">
         <v-tooltip />
         <v-axis />
         <v-bar position="year*sales" />

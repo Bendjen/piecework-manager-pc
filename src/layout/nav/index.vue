@@ -2,16 +2,22 @@
   <div class="nav" flex="main:center cross:center">
     <div flex='dir:top main:center cross:center' class="listContainer">
       <router-link flex='dir:top main:center cross:center' to="staff">
-        <img src="@/assets/nav/证件.png" ><p>员工</p>
-      </router-link>
-      <router-link flex='dir:top main:center cross:center' to="staff">
-        <img src="@/assets/nav/分钱了.png" ><p>工资</p>
+        <img src="@/assets/nav/员工.png" ><p>员工</p>
       </router-link>
       <router-link flex='dir:top main:center cross:center' to="record">
-        <img src="@/assets/nav/记录种类.png" ><p>记单</p>
+        <img src="@/assets/nav/计单.png" ><p>记单</p>
+      </router-link>
+      <router-link flex='dir:top main:center cross:center' to="delivery">
+        <img src="@/assets/nav/出货.png" ><p>出货</p>
       </router-link>
       <router-link flex='dir:top main:center cross:center' to="comparison">
-        <img src="@/assets/nav/新消息.png" ><p>核对</p>
+        <img src="@/assets/nav/核对.png" ><p>核对</p>
+      </router-link>
+      <router-link flex='dir:top main:center cross:center' to="search">
+        <img src="@/assets/nav/查询.png" ><p>查询</p>
+      </router-link>
+      <router-link flex='dir:top main:center cross:center' to="setting">
+        <img src="@/assets/nav/设置.png" ><p>设置</p>
       </router-link>
     </div>
   </div>

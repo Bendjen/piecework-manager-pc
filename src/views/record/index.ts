@@ -23,7 +23,7 @@ export default class Record extends Vue {
       chartsData: [],
       label: { offset: 12 },
       cmd: '',
-      chartHeight: 660
+      chartHeight: 620
     }
   }
   mounted () {

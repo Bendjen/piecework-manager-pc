@@ -1,0 +1,46 @@
+.el-table--enable-row-transition .el-table__body td{
+    padding: 0!important;
+}
+
+.el-table thead th{
+  background: #dcdfe6;
+}
+
+.el-table__row td{
+  &:first-child{
+    background: #dcdfe6;
+    color:#909399;
+    font-weight: bold;
+  }
+}
+
+
+.toolBar {
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 24px;
+    p{
+      font-size:14px;
+      span{
+        padding-right: 20px;
+      }
+    }
+    i{
+      font-size: 24px;
+      cursor: pointer;
+    }
+  }
+
+
+.cellInput {
+  border: none;
+  background:none;
+  outline:none;
+  text-align: center;
+  width: 60px;
+  height: 40px;
+  &:focus { 
+    border: none;
+    background:none;
+  }
+}
