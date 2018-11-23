@@ -5,6 +5,8 @@ import Employee from './views/employee/index.vue'
 import Record from './views/record/index.vue'
 import Comparison from './views/comparison/index.vue'
 import Delivery from './views/delivery/index.vue'
+import Setting from './views/setting/index.vue'
+import Search from './views/search/index.vue'
 
 Vue.use(Router)
 
@@ -36,6 +38,16 @@ export default new Router({
       path: '/delivery',
       name: 'delivery',
       component: Delivery
+    },
+    {
+      path: '/setting',
+      name: 'setting',
+      component: Setting
+    },
+    {
+      path: '/search',
+      name: 'search',
+      component: Search
     },
     {
       path: '/comparison',
