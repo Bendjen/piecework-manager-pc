@@ -3,7 +3,9 @@
   position: fixed;
   height: 100%;
   right: 40px;
+  z-index: 10;
   .listContainer{
+    border: 1px solid #e5e5e5;
     background: #eff0f3;
     padding: 20px 0;
     list-style: none;

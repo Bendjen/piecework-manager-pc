@@ -4,9 +4,12 @@ import router from './router'
 import 'flex.css'
 import ViserVue from 'viser-vue'
 import NP from 'number-precision'
+import { MessageBox,Notification } from 'element-ui'
 
 Vue.use(ViserVue)
 Vue.prototype.$NP = NP
+Vue.prototype.$MessageBox = MessageBox
+Vue.prototype.$Notification = Notification
 Vue.config.productionTip = false
 
 new Vue({
@@ -17,6 +20,8 @@ new Vue({
 // 声明全局方法
 declare module 'vue/types/vue' {
   interface Vue {
-    $NP: any
+    $NP: any,
+    $Notification: any,
+    $MessageBox: any,
   }
 }

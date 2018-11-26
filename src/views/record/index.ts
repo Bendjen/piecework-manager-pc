@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import './index.scss'
 import { Component } from 'vue-property-decorator'
-import { Table, TableColumn, Input, MessageBox, Notification } from 'element-ui'
+import { Table, TableColumn, Input } from 'element-ui'
 import { IRecord, IStaff } from '@/declare.d.ts'
 import data from '@/data'
 import { View } from '@antv/data-set'
@@ -29,7 +29,7 @@ export default class Record extends Vue {
   mounted () {
     this.$data.recordList.forEach((item: IRecord) => {
       const staffIndex = this.$data.tableData.findIndex((data: IStaff) => data.name === item.staff)
-      this.$set(this.$data.tableData[staffIndex], item.type,this.$NP.plus(this.$data.tableData[staffIndex][item.type] || 0,item.num))
+      this.$set(this.$data.tableData[staffIndex], item.type, this.$NP.plus(this.$data.tableData[staffIndex][item.type] || 0, item.num))
     })
     // console.log(this.$data.tableData)
     // console.log([...new Set(this.$data.recordList.map((item: IRecord) => item.type))])
@@ -55,16 +55,16 @@ export default class Record extends Vue {
     if (event.keyCode === 13) {
       const cmdArr = this.$data.cmd.split(' ')
       if (cmdArr.length !== 3) {
-        MessageBox.alert('命令格式错误', '提示').catch(err => console.log(err))
+        this.$MessageBox.alert('命令格式错误', '提示')
       } else {
         const personId = cmdArr[0]
         const workType = cmdArr[1]
         const num = cmdArr[2]
         const personName = this.$data.staffList.find((item: IStaff) => item.key === personId)
         if (!personName) {
-          MessageBox.alert('您输入的员工不存在，请检查后重试', '提示').catch(err => console.log(err))
+          this.$MessageBox.alert('您输入的员工不存在，请检查后重试', '提示')
         } else {
-          Notification.success({
+          this.$Notification.success({
             title: personName,
             message: `${workType} 计单 ${num} 万件`
           })

@@ -65,7 +65,7 @@ registerShape('interval', 'waterfall', {
   }
 })
 
-const data = [
+const data: any = [
   { type: '日用品', money: 300 },
   { type: '伙食费', money: 900 },
   { type: '交通费', money: 200 },
@@ -77,7 +77,7 @@ const data = [
 ]
 
 for (let i = 0; i < data.length; i++) {
-  const item = data[i]
+  const item: any = data[i]
 
   if (i > 0 && i < data.length - 1) {
     if (Array.isArray(data[i - 1].money)) {
@@ -120,10 +120,14 @@ export default class Search extends Vue {
   data () {
     return {
       data,
-      height: 400,
+      height: 600,
       items,
       color,
-      tooltip
+      tooltip,
+      value: '',
+      value8: [],
+      value6: [],
+      options: []
     }
   }
 }
