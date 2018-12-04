@@ -5,8 +5,9 @@
       <i class="el-icon-plus" @click='addStaff'></i>
     </div>
     <el-carousel :interval="4000" type="card" height="680px"  :autoplay="false">
-      <el-carousel-item v-for="item in 6" :key="item" >
+      <el-carousel-item v-for="(item,index) in 6" :key="item" >
         <i class="el-icon-close" @click='deleteStaff'></i>
+        <span class='number'>{{index+1}}</span>
         <div flex='main:center cross:center' class='headLine'>
           <img width="156" height="156" src="@/assets/staff/default7.png" alt="">
           <div>

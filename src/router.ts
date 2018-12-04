@@ -17,12 +17,14 @@ export default new Router({
     {
       path: '/',
       name: 'employee',
-      component: Employee
+      component: Employee,
+      meta: { title: '员工管理' }
     },
     {
       path: '/staff',
       name: 'staff',
-      component: Employee
+      component: Employee,
+      meta: { title: '员工管理' }
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
@@ -32,27 +34,32 @@ export default new Router({
     {
       path: '/record',
       name: 'record',
-      component: Record
+      component: Record,
+      meta: { title: '计单' }
     },
     {
       path: '/delivery',
       name: 'delivery',
-      component: Delivery
+      component: Delivery,
+      meta: { title: '出货报表' }
     },
     {
       path: '/setting',
       name: 'setting',
-      component: Setting
+      component: Setting,
+      meta: { title: '设置' }
     },
     {
       path: '/search',
       name: 'search',
-      component: Search
+      component: Search,
+      meta: { title: '筛选统计' }
     },
     {
       path: '/comparison',
       name: 'comparison',
-      component: Comparison
+      component: Comparison,
+      meta: { title: '报表核对' }
     }
   ]
 })
