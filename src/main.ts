@@ -5,8 +5,9 @@ import 'flex.css'
 import ViserVue from 'viser-vue'
 import NP from 'number-precision'
 import { MessageBox, Notification, Loading } from 'element-ui'
+
 let _loadingInstance: any = null
-Vue.use(ViserVue)
+
 Vue.prototype.$NP = NP
 Vue.prototype.$MessageBox = MessageBox
 Vue.prototype.$Notification = Notification
@@ -23,7 +24,10 @@ Vue.prototype.$Loading = {
     _loadingInstance = null
   }
 }
+
 Vue.config.productionTip = false
+
+Vue.use(ViserVue)
 
 new Vue({
   router,

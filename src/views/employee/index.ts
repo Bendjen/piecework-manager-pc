@@ -2,6 +2,8 @@ import Vue from 'vue'
 import './index.scss'
 import { Component } from 'vue-property-decorator'
 import { Carousel, CarouselItem, Dialog } from 'element-ui'
+import * as Fetch from '@/utils/fetch.ts'
+
 Vue.use(Carousel)
 Vue.use(CarouselItem)
 Vue.use(Dialog)
@@ -28,11 +30,17 @@ export default class Employee extends Vue {
   data () {
     return {
       data,
+      staffList: [],
       staffName: '清水健',
       height: 380,
       dialogVisible: false
     }
   }
+  mounted () {
+    const staffList = Fetch.staffList()
+    this.$data.staffList = staffList
+  }
+
   addStaff () {
     this.$MessageBox.prompt('请输入员工姓名', '提示', {
       confirmButtonText: '确定',
