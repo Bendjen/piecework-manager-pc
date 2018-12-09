@@ -5,13 +5,11 @@ import dayjs from 'dayjs'
 
 export function itemTypeList () {
   let list = store.get('ITEM_TYPE_LIST').map((item: any) => item)
-  list.reverse()
   return list
 }
 
 export function staffList () {
-  let list = store.get('STAFF_LIST').map((item: any) => item.name)
-  list.reverse()
+  let list = store.get('STAFF_LIST').map((item: any) => item)
   return list
 }
 

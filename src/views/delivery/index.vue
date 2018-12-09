@@ -5,6 +5,10 @@
                 <span >命令输入：</span>
                 <el-input style='width:600px' v-model.trim="cmd" @keydown.native='doCommand' placeholder="通过输入 “ [工种] [数量] ” 进行连续快速计单（之间用空格隔开）"></el-input>
             </p>
+            <p>
+                <i class="el-icon-plus" style='padding-right:15px;'></i>
+                <i class="el-icon-setting"></i>
+            </p>
         </div>
         <v-chart :forceFit="true" :height="height" :data="data" :scale="scale">
             <v-tooltip />
