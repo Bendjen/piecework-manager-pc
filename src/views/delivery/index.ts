@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import './index.scss'
 import { Component } from 'vue-property-decorator'
-import { Table, TableColumn, Input, MessageBox, Notification } from 'element-ui'
+import { Table, TableColumn, Input } from 'element-ui'
+import * as ItemType from '@/utils/ItemType'
+import * as Fetch from '@/utils/Fetch'
 import { IRecord, IStaff } from '@/declare.d.ts'
 import data from '@/data'
 import { View } from '@antv/data-set'
@@ -25,29 +27,47 @@ export default class Delivery extends Vue {
         { year: '1960 年', sales: 38 },
         { year: '1962 年', sales: 38 }
       ],
-      scale: [{
-        dataKey: 'sales',
-        tickInterval: 20
-      }],
+      addItemDialog: false,
+      itemListDialog: false,
+      itemList: [],
+      newItem: { name: '', price: '' },
+      scale: [
+        {
+          dataKey: 'sales',
+          tickInterval: 20
+        }
+      ],
       height: 600
     }
   }
+  mounted () {
+    this.$set(this.$data, 'itemList', Fetch.itemTypeList())
+  }
+
   doCommand (event: any) {
     if (event.keyCode === 13) {
       const cmdArr = this.$data.cmd.split(' ')
       if (cmdArr.length !== 2) {
-        MessageBox.alert('命令格式错误', '提示').catch(err => console.log(err))
+        this.$MessageBox.alert('命令格式错误', '提示')
       } else {
         const workType = cmdArr[0]
         const num = cmdArr[1]
 
-        Notification.success({
+        this.$Notification.success({
           title: workType,
           message: `${workType} 出货 ${num} 万件`
         })
-
       }
       this.$set(this.$data, 'cmd', '')
     }
+  }
+  addItem () {
+    let vm = this
+    ItemType.add({
+      ...this.$data.newItem,
+      callback: () => {
+        vm.$set(vm.$data, 'newItem', { name: '', price: '' })
+      }
+    })
   }
 }

@@ -13,3 +13,10 @@ export interface IStaff {
   time?: number | string;
   key?: string;
 }
+
+export interface IItemStaff {
+  name: string;
+  price:number;
+  id?: number;
+  time?: number | string;
+}
