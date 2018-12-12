@@ -41,6 +41,10 @@ export default class Delivery extends Vue {
     }
   }
   mounted () {
+    this.freshItemList()
+  }
+
+  freshItemList () {
     this.$set(this.$data, 'itemList', Fetch.itemTypeList())
   }
 
@@ -63,10 +67,51 @@ export default class Delivery extends Vue {
   }
   addItem () {
     let vm = this
-    ItemType.add({
+    ItemType.addItem({
       ...this.$data.newItem,
       callback: () => {
         vm.$set(vm.$data, 'newItem', { name: '', price: '' })
+        vm.$set(vm.$data, 'addItemDialog', false)
+        vm.freshItemList()
+      }
+    })
+  }
+  deleteItem (name: string) {
+    let vm = this
+    this.$MessageBox
+      .confirm('确定要删除该型号吗？', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      })
+      .then(() => {
+        ItemType.deleteItem({
+          name: name,
+          callback: () => {
+            vm.freshItemList()
+          }
+        })
+      })
+  }
+
+  changeName (name: string, event: any) {
+    let vm = this
+    ItemType.changeName({
+      preName: name,
+      newName: event.target.value,
+      callback: () => {
+        vm.freshItemList()
+      }
+    })
+  }
+
+  changePrice (name: string, event: any) {
+    let vm = this
+    ItemType.changePrice({
+      name: name,
+      price: event.target.value,
+      callback: () => {
+        vm.freshItemList()
       }
     })
   }

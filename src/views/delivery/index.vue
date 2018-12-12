@@ -21,7 +21,7 @@
       <v-bar position="year*sales"/>
     </v-chart>
 
-    <el-dialog title="型号管理" :visible.sync="addItemDialog" width="25%" >
+    <el-dialog title="添加型号" :visible.sync="addItemDialog" width="25%" >
       <div>
         <p class="line" flex="main:center cross:center">
           <span>型号名称：</span>
@@ -43,8 +43,8 @@
       </span>
     </el-dialog>
 
-    <el-dialog title="添加型号" :visible.sync="itemListDialog" width="25%" >
-      <div>
+    <el-dialog title="型号管理" :visible.sync="itemListDialog" width="30%" >
+      <div v-if ="itemList.length >0"  >
           <p class='itemLine' flex='main:center cross:center'>
               <span>序号</span>
               <span>名称</span>
@@ -53,10 +53,13 @@
           </p>
           <p v-for='(item,index) in itemList' :key='index' class='itemLine' flex='main:center cross:center'>
               <span>{{index+1}}</span>
-              <span>{{item.name}}</span>
-              <span>{{item.price}}</span>
-              <i class='el-icon-close'></i>
+              <input type="text" class='opacityInput' :value='item.name' @click='$event.currentTarget.select()' @change='changeName(item.name,$event)'>
+              <input type="number" class='opacityInput' :value='item.price' @click='$event.currentTarget.select()' @change='changePrice(item.name,$event)'>
+              <i class='el-icon-close' @click='deleteItem(item.name)'></i>
           </p>
+      </div>
+      <div v-else flex='main:center cross:center'>
+          <p style='font-size:16px;'>没有任何型号,<span style='color:#4089ca;text-decoration: underlin' @click='addItemDialog = true'>去添加</span></p>
       </div>
       <span slot="footer" class="dialog-footer">
         <el-button @click="itemListDialog = false">取 消</el-button>
