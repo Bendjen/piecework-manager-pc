@@ -44,7 +44,7 @@ export function remove ({
   if (index !== -1) {
     staffList.splice(index, 1)
     store.set('STAFF_LIST', staffList)
-    Notification.success(`已删除员工：${name}`)
+    Notification.success({ message: `已删除员工：${name}`,title: '成功' })
     callback && callback(index)
   } else {
     MessageBox.alert('找不到该员工','错误').catch(e => e)
@@ -71,7 +71,7 @@ export function changeName ({
     const newStaff = { ...staffList[index],name: newName }
     staffList.splice(index, 1,newStaff)
     store.set('STAFF_LIST', staffList)
-    Notification.success(`${primeName} 变更为 ${newName}`)
+    Notification.success({ message: `${primeName} 变更为 ${newName}`,title: '成功' })
     callback && callback(index)
   } else {
     MessageBox.alert('找不到该员工','错误').catch(e => e)

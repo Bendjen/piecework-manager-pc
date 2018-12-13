@@ -4,6 +4,7 @@ import { Component } from 'vue-property-decorator'
 import { Table, TableColumn, Input } from 'element-ui'
 import * as ItemType from '@/utils/ItemType'
 import * as Fetch from '@/utils/Fetch'
+import * as Record from '@/utils/Record'
 import { IRecord, IStaff } from '@/declare.d.ts'
 import data from '@/data'
 import { View } from '@antv/data-set'
@@ -30,6 +31,7 @@ export default class Delivery extends Vue {
       addItemDialog: false,
       itemListDialog: false,
       itemList: [],
+      cmd: '',
       newItem: { name: '', price: '' },
       scale: [
         {
@@ -49,6 +51,7 @@ export default class Delivery extends Vue {
   }
 
   doCommand (event: any) {
+    let vm = this
     if (event.keyCode === 13) {
       const cmdArr = this.$data.cmd.split(' ')
       if (cmdArr.length !== 2) {
@@ -57,12 +60,10 @@ export default class Delivery extends Vue {
         const workType = cmdArr[0]
         const num = cmdArr[1]
 
-        this.$Notification.success({
-          title: workType,
-          message: `${workType} 出货 ${num} 万件`
-        })
+        Record.goodsExport({ type: workType,num: num })
       }
-      this.$set(this.$data, 'cmd', '')
+      vm.$set(this.$data, 'cmd', '')
+
     }
   }
   addItem () {
