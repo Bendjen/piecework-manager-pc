@@ -1,5 +1,5 @@
 <template>
-  <div style='position:relative;height:100%'>
+  <div class='employeeContainer'>
     <div flex="main:right cross:center">
       <img src="@/assets/staff/money.png" @click="computeMoney" class="computeMoney">
       <i class="el-icon-plus" @click="addStaff"></i>

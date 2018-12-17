@@ -18,7 +18,7 @@
     <v-chart :forceFit="true" :height="height" :data="data" :scale="scale">
       <v-tooltip/>
       <v-axis/>
-      <v-bar position="year*sales"/>
+      <v-bar position="type*num"/>
     </v-chart>
 
     <el-dialog title="添加型号" :visible.sync="addItemDialog" width="25%" >
@@ -59,7 +59,7 @@
           </p>
       </div>
       <div v-else flex='main:center cross:center'>
-          <p style='font-size:16px;'>没有任何型号,<span style='color:#4089ca;text-decoration: underlin' @click='addItemDialog = true'>去添加</span></p>
+          <p style='font-size:16px;'>没有任何型号,<span style='color:#4089ca;text-decoration: underline;cursor:pointer' @click='addItemDialog = true'>去添加</span></p>
       </div>
       <span slot="footer" class="dialog-footer">
         <el-button @click="itemListDialog = false">取 消</el-button>

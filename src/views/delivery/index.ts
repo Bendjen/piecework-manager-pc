@@ -18,16 +18,7 @@ export default class Delivery extends Vue {
   name = 'Delivery'
   data () {
     return {
-      data: [
-        { year: '1951 年', sales: 38 },
-        { year: '1952 年', sales: 52 },
-        { year: '1956 年', sales: 61 },
-        { year: '1957 年', sales: 145 },
-        { year: '1958 年', sales: 48 },
-        { year: '1959 年', sales: 38 },
-        { year: '1960 年', sales: 38 },
-        { year: '1962 年', sales: 38 }
-      ],
+      data: [],
       addItemDialog: false,
       itemListDialog: false,
       itemList: [],
@@ -44,10 +35,15 @@ export default class Delivery extends Vue {
   }
   mounted () {
     this.freshItemList()
+    this.freshTable()
   }
 
   freshItemList () {
     this.$set(this.$data, 'itemList', Fetch.itemTypeList())
+  }
+
+  freshTable () {
+    this.data = Fetch.exportSummary(new Date(), 'day')
   }
 
   doCommand (event: any) {
@@ -60,10 +56,11 @@ export default class Delivery extends Vue {
         const workType = cmdArr[0]
         const num = cmdArr[1]
 
-        Record.goodsExport({ type: workType,num: num })
+        Record.goodsExport({ type: workType, num: num }).then(() => {
+          vm.freshTable()
+        }).catch(e => e)
       }
       vm.$set(this.$data, 'cmd', '')
-
     }
   }
   addItem () {

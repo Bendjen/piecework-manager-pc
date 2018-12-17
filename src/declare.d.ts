@@ -1,6 +1,6 @@
 export interface IRecord {
   type: string;
-  num: number | string;
+  num: number;
   time: number | string;
   staff: string;
   action: string;
@@ -16,7 +16,7 @@ export interface IStaff {
 
 export interface IItemStaff {
   name: string;
-  price:number;
+  price: number;
   id?: number;
   time?: number | string;
 }
