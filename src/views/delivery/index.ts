@@ -9,6 +9,11 @@ import { IRecord, IStaff } from '@/declare.d.ts'
 import data from '@/data'
 import { View } from '@antv/data-set'
 
+interface IExportSummaryItem {
+  type: string
+  num: string | number
+}
+
 Vue.use(Table)
 Vue.use(TableColumn)
 Vue.use(Input)
@@ -18,7 +23,7 @@ export default class Delivery extends Vue {
   name = 'Delivery'
   data () {
     return {
-      data: [],
+      exportSummary: [],
       addItemDialog: false,
       itemListDialog: false,
       itemList: [],
@@ -26,10 +31,19 @@ export default class Delivery extends Vue {
       newItem: { name: '', price: '' },
       scale: [
         {
-          dataKey: 'sales',
-          tickInterval: 20
+          dataKey: 'num',
+          tickInterval: 50
         }
       ],
+      label : [
+        'num', {
+          labelEmit: true,
+          textStyle: {
+            fill: '#8c8c8c'
+          }
+        }
+      ],
+      color: ['type'],
       height: 600
     }
   }
@@ -43,7 +57,9 @@ export default class Delivery extends Vue {
   }
 
   freshTable () {
-    this.data = Fetch.exportSummary(new Date(), 'day')
+    let exportSummary = Fetch.exportSummary(new Date(), 'day')
+    this.$set(this.$data,'exportSummary',exportSummary)
+    this.$set(this.$data.scale[0],'max',Math.max.apply(Math,exportSummary.map((item: IExportSummaryItem) => item.num)) + 50)
   }
 
   doCommand (event: any) {

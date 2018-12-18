@@ -10,13 +10,16 @@
                 <i :class="ifCharts?'el-icon-tickets':'el-icon-picture-outline'" @click='ifCharts = !ifCharts'></i>
             </p>
         </div>
-        <v-chart :forceFit="true" :height="chartHeight" :data="chartsData" v-if='ifCharts'>
-            <v-coord type="rect" direction="LB" />
-            <v-tooltip />
-            <v-legend />
-            <v-axis dataKey="name" :label="label" />
-            <v-stack-bar position="name*数量" color="工种" />
-        </v-chart>
+
+            <v-chart :forceFit="true" :height="chartHeight" :data="chartsData"  v-if='ifCharts'>
+                <v-slider :data="chartsData" xAxis='name' yAxis='name' />
+                <v-coord type="rect" direction="LB" />
+                <v-tooltip />
+                <v-legend />
+                <v-axis dataKey="name" :label="label" />
+                <v-stack-bar position="name*数量" color="工种" />
+            </v-chart>
+    
 
         <el-table :data="tableData" border style="width:100%" :height="chartHeight" v-else>
             <el-table-column label="员工/工种"  width="100" prop="name" fixed style="text-align:center" align="center"> </el-table-column>

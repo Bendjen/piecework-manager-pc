@@ -3,6 +3,7 @@ import './index.scss'
 import { Component } from 'vue-property-decorator'
 import { Table, TableColumn, Input } from 'element-ui'
 import { IRecord, IStaff } from '@/declare.d.ts'
+import * as Record from '@/utils/Record'
 import data from '@/data'
 import { View } from '@antv/data-set'
 
@@ -11,7 +12,7 @@ Vue.use(TableColumn)
 Vue.use(Input)
 
 @Component
-export default class Record extends Vue {
+export default class PieceRecord extends Vue {
   name = 'Record'
   data () {
     return {
@@ -60,14 +61,11 @@ export default class Record extends Vue {
         const personId = cmdArr[0]
         const workType = cmdArr[1]
         const num = cmdArr[2]
-        const personName = this.$data.staffList.find((item: IStaff) => item.key === personId)
+        const personName = this.$data.staffList.find((item: IStaff) => item.key === personId).name
         if (!personName) {
           this.$MessageBox.alert('您输入的员工不存在，请检查后重试', '提示')
         } else {
-          this.$Notification.success({
-            title: personName,
-            message: `${workType} 计单 ${num} 万件`
-          })
+          Record.pieceRecord({ type: workType, num: num, staff: personName }).then().catch(e => e)
         }
       }
       this.$set(this.$data, 'cmd', '')
