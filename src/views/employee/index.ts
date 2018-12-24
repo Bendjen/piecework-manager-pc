@@ -54,14 +54,18 @@ export default class Employee extends Vue {
       staffList: [],
       staffName: '清水健',
       height: 380,
-      dialogVisible: false
+      addStaffDialog: false,
+      newStaff: {
+        name: '',
+        short: ''
+      }
     }
   }
   mounted () {
     this.freshStaffList()
   }
 
-  freshStaffList (index?: number | string) {
+  freshStaffList (index?: any) {
     const staffList = Fetch.staffList()
     this.$set(this.$data, 'staffList', staffList)
     setTimeout(() => {
@@ -72,41 +76,51 @@ export default class Employee extends Vue {
 
   addStaff () {
     const vm = this
-    this.$MessageBox
-      .prompt('请输入员工姓名', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        inputPattern: /^[\u4e00-\u9fa5]+$/,
-        inputErrorMessage: '请输入中文'
-      })
-      .then(({ value }: any) => {
-        Staff.add({
-          name: value,
-          callback: (index?: number) => {
-            this.freshStaffList(index)
-          }
-        })
-      })
+    Staff.add({
+      name: this.$data.newStaff.name,
+      short: this.$data.newStaff.short
+    }).then(lastIndex => {
+      vm.freshStaffList(lastIndex)
+      vm.$data.addStaffDialog = false
+      vm.$data.newStaff = { name: '',short: '' }
+    }).catch()
   }
 
   staffNameChange (primeName: string, e: any) {
-    const reg = /^[\u4e00-\u9fa5]+$/
-    if (!reg.test(e.target.value)) {
-      this.$MessageBox.alert('请输入中文', '提示')
+    // const reg = /^[\u4e00-\u9fa5]+$/
+    // if (!reg.test(e.target.value)) {
+    //   this.$MessageBox.alert('请输入中文', '提示')
+    //   e.target.value = e.target._value
+    //   e.target.focus()
+    // } else {
+    if (!e.target.value) {
+      this.$MessageBox.alert('姓名不能为空', '提示')
       e.target.value = e.target._value
       e.target.focus()
-    } else {
-      Staff.changeName({
-        primeName: primeName,
-        newName: e.target.value,
-        callback: (index?: number) => {
-          this.freshStaffList(index)
-        }
-      })
+      return false
     }
+    Staff.changeName({
+      primeName: primeName,
+      newName: e.target.value
+    }).then(lastIndex => this.freshStaffList(lastIndex)).catch()
+    // }
+  }
+
+  staffShortChange (primeShort: string, e: any) {
+    if (!e.target.value) {
+      this.$MessageBox.alert('缩写不能为空', '提示')
+      e.target.value = e.target._value
+      e.target.focus()
+      return false
+    }
+    Staff.changeShort({
+      primeShort: primeShort,
+      newShort: e.target.value
+    }).then(lastIndex => this.freshStaffList(lastIndex)).catch()
   }
 
   deleteStaff (name: string) {
+    const vm = this
     this.$MessageBox
       .confirm('删除员工将删除所有该员工的相关记录, 是否继续?', '提示', {
         confirmButtonText: '确定',
@@ -115,11 +129,8 @@ export default class Employee extends Vue {
       })
       .then(() => {
         Staff.remove({
-          name: name,
-          callback: (index?: number) => {
-            this.freshStaffList(index)
-          }
-        })
+          name: name
+        }).then(lastIndex => vm.freshStaffList(lastIndex)).catch()
       })
   }
 

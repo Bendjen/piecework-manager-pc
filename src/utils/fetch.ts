@@ -59,15 +59,9 @@ export function currentOperationRecord (
 
 // 记单汇总(员工)
 export function staffSummary (date = new Date(), unit = 'month') {
-  // 数据初始化为0
+
   let staffSummary: any = {}
   let itemTypeList = store.get('ITEM_TYPE_LIST')
-  // store.get("STAFF_LIST").forEach(item => {
-  // 	staffSummary[item.name] = {};
-  // 	staffSummary[item.name]["detail"] = {};
-  // 	staffSummary[item.name]["record"] = [];
-  // 	staffSummary[item.name]["total"] = 0;
-  // });
 
   // 数据累加
   recordFilter({ date, unit, action: 'PIECE_RECORD' }).forEach((item: any) => {
@@ -103,7 +97,6 @@ export function staffSummary (date = new Date(), unit = 'month') {
     )
   })
 
-  // console.log(staffSummary);
   return staffSummary
 }
 

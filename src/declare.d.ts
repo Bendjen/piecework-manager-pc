@@ -11,7 +11,7 @@ export interface IStaff {
   name: string
   id: number
   time?: number | string
-  key?: string
+  short?: string
 }
 
 export interface IItemStaff {

@@ -4,7 +4,8 @@ import { Component } from 'vue-property-decorator'
 import { Table, TableColumn, Input } from 'element-ui'
 import { IRecord, IStaff } from '@/declare.d.ts'
 import * as Record from '@/utils/Record'
-import data from '@/data'
+import * as Fetch from '@/utils/Fetch'
+// import data from '@/data'
 import { View } from '@antv/data-set'
 
 Vue.use(Table)
@@ -16,10 +17,9 @@ export default class PieceRecord extends Vue {
   name = 'Record'
   data () {
     return {
-      itemList: data['ITEM_TYPE_LIST'],
-      staffList: data['STAFF_LIST'],
-      recordList: data['OPERATION_RECORD_LIST'],
-      tableData: data['STAFF_LIST'],
+      itemList: [],
+      staffList: [],
+      tableData: [],
       ifCharts: true,
       chartsData: [],
       label: { offset: 12 },
@@ -28,23 +28,37 @@ export default class PieceRecord extends Vue {
     }
   }
   mounted () {
-    this.$data.recordList.forEach((item: IRecord) => {
-      const staffIndex = this.$data.tableData.findIndex((data: IStaff) => data.name === item.staff)
-      this.$set(this.$data.tableData[staffIndex], item.type, this.$NP.plus(this.$data.tableData[staffIndex][item.type] || 0, item.num))
+    this.$data.itemList = Fetch.itemTypeList()
+    this.$data.staffList = Fetch.staffList()
+    this.freshTable()
+  }
+
+  freshTable () {
+    const todayRecordList = Fetch.recordFilter({ date: new Date(), unit: 'day', action: 'PIECE_RECORD' })
+    let tableData: any = Fetch.staffList()
+    let chartsData: any = [...new Set(todayRecordList.map((item: IRecord) => { return { name: item.staff } }))]
+    todayRecordList.forEach((item: IRecord) => {
+      const tableStaffIndex = tableData.findIndex((data: IStaff) => data.name === item.staff)
+      const chartsStaffIndex = chartsData.findIndex((data: IStaff) => data.name === item.staff)
+      if (tableStaffIndex !== -1) {
+        tableData[tableStaffIndex][item.type] = this.$NP.plus(tableData[tableStaffIndex][item.type] || 0, item.num)
+      }
+      if (chartsStaffIndex !== -1) {
+        chartsData[chartsStaffIndex][item.type] = this.$NP.plus(chartsData[chartsStaffIndex][item.type] || 0, item.num)
+      }
     })
-    // console.log(this.$data.tableData)
-    // console.log([...new Set(this.$data.recordList.map((item: IRecord) => item.type))])
-    const dv = new View().source(this.$data.tableData)
+    const dv = new View().source(chartsData)
     dv.transform({
       type: 'fold',
-      fields: [...new Set(this.$data.recordList.map((item: IRecord) => item.type))],
+      fields: [...new Set(todayRecordList.map((item: IRecord) => item.type))],
       key: '工种',
       value: '数量',
       retains: ['name']
     })
     this.$set(this.$data, 'chartsData', dv.rows)
-
+    this.$set(this.$data, 'tableData', tableData)
   }
+
   cellClick (row: any, column: any, cell: any) {
     this.$set(this.$data, 'activeCell', {
       row: row.name,
@@ -52,20 +66,26 @@ export default class PieceRecord extends Vue {
       value: row.time
     })
   }
+  recordByTable (name: string, type: string, event: any) {
+    const vm = this
+    Record.editRecord({ type: type, num: event.target.value, staff: name }).then(res => vm.freshTable()).catch(e => e)
+  }
   doCommand (event: any) {
+    const vm = this
     if (event.keyCode === 13) {
       const cmdArr = this.$data.cmd.split(' ')
       if (cmdArr.length !== 3) {
         this.$MessageBox.alert('命令格式错误', '提示')
       } else {
-        const personId = cmdArr[0]
-        const workType = cmdArr[1]
+        const key = cmdArr[0]
+        const type = cmdArr[1]
         const num = cmdArr[2]
-        const personName = this.$data.staffList.find((item: IStaff) => item.key === personId).name
-        if (!personName) {
+        const staffIndex = this.$data.staffList.findIndex((item: IStaff) => item.name === name)
+        if (staffIndex === -1) {
           this.$MessageBox.alert('您输入的员工不存在，请检查后重试', '提示')
         } else {
-          Record.pieceRecord({ type: workType, num: num, staff: personName }).then().catch(e => e)
+          const staff = this.$data.staffList[staffIndex]
+          Record.pieceRecord({ type: type, num: num, staff: staff }).then(res => vm.freshTable()).catch(e => e)
         }
       }
       this.$set(this.$data, 'cmd', '')

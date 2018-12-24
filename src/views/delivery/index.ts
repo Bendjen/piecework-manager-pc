@@ -6,7 +6,6 @@ import * as ItemType from '@/utils/ItemType'
 import * as Fetch from '@/utils/Fetch'
 import * as Record from '@/utils/Record'
 import { IRecord, IStaff } from '@/declare.d.ts'
-import data from '@/data'
 import { View } from '@antv/data-set'
 
 interface IExportSummaryItem {
