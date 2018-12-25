@@ -77,15 +77,15 @@ export default class PieceRecord extends Vue {
       if (cmdArr.length !== 3) {
         this.$MessageBox.alert('命令格式错误', '提示')
       } else {
-        const key = cmdArr[0]
+        const short = cmdArr[0]
         const type = cmdArr[1]
         const num = cmdArr[2]
-        const staffIndex = this.$data.staffList.findIndex((item: IStaff) => item.name === name)
+        const staffIndex = this.$data.staffList.findIndex((item: IStaff) => item.short === short)
         if (staffIndex === -1) {
           this.$MessageBox.alert('您输入的员工不存在，请检查后重试', '提示')
         } else {
-          const staff = this.$data.staffList[staffIndex]
-          Record.pieceRecord({ type: type, num: num, staff: staff }).then(res => vm.freshTable()).catch(e => e)
+          const staff = this.$data.staffList[staffIndex].name
+          Record.pieceRecord({ type: type, num: num, staff: staff }).then(() => vm.freshTable()).catch(e => e)
         }
       }
       this.$set(this.$data, 'cmd', '')

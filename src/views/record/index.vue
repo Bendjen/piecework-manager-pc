@@ -12,7 +12,6 @@
         </div>
         <div v-if='ifCharts'>
             <v-chart :forceFit="true" :height="chartHeight" :data="chartsData" >
-                <v-slider :data="chartsData" xAxis='name' yAxis='name' />
                 <v-coord type="rect" direction="LB" />
                 <v-tooltip />
                 <v-legend />

@@ -10,51 +10,25 @@ Vue.use(CarouselItem)
 Vue.use(Dialog)
 
 import { View } from '@antv/data-set'
-
-const sourceData = [
-  {
-    name: 'London',
-    'Jan.': 18.9,
-    'Feb.': 28.8,
-    'Mar.': 39.3,
-    'Apr.': 81.4,
-    May: 47,
-    'Jun.': 20.3,
-    'Jul.': 24,
-    'Aug.': 35.6
-  },
-  {
-    name: 'Berlin',
-    'Jan.': 12.4,
-    'Feb.': 23.2,
-    'Mar.': 34.5,
-    'Apr.': 99.7,
-    May: 52.6,
-    'Jun.': 35.5,
-    'Jul.': 37.4,
-    'Aug.': 42.4
-  }
-]
-
-const dv = new View().source(sourceData)
-dv.transform({
-  type: 'fold',
-  fields: ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May', 'Jun.', 'Jul.', 'Aug.'],
-  key: '月份',
-  value: '月均降雨量'
-})
-const data = dv.rows
+import { IStaff,IRecord } from '@/declare'
 
 @Component
 export default class Employee extends Vue {
   name = 'Employee'
   data () {
     return {
-      data,
+      chartsData: [],
       staffList: [],
-      staffName: '清水健',
       height: 380,
       addStaffDialog: false,
+      label : [
+        'num', {
+          labelEmit: true,
+          textStyle: {
+            fill: '#8c8c8c'
+          }
+        }
+      ],
       newStaff: {
         name: '',
         short: ''
@@ -68,10 +42,29 @@ export default class Employee extends Vue {
   freshStaffList (index?: any) {
     const staffList = Fetch.staffList()
     this.$set(this.$data, 'staffList', staffList)
+    this.freshChartsDate()
     setTimeout(() => {
       let $carousel: any = this.$refs.carousel
       $carousel.setActiveItem(index || 0)
     }, 300)
+  }
+
+  freshChartsDate () {
+    const MonthPieceRecord = Fetch.recordFilter({ date: new Date(),unit: 'month',action: 'PIECE_RECORD' })
+    this.$data.chartsData = this.$data.staffList.map((item: IStaff) => {
+      let staffChartsData: any = []
+      const staffRecord = MonthPieceRecord.filter((record: IRecord) => record.staff === item.name)
+      staffRecord.forEach((record: IRecord) => {
+        let targetIndex = staffChartsData.findIndex((data: any) => data['type'] === record.type)
+        if (targetIndex === -1) {
+          staffChartsData.push({ 'type': record.type ,'num': 0 })
+          targetIndex = staffChartsData.length - 1
+        }
+        staffChartsData[targetIndex]['num'] = this.$NP.plus(staffChartsData[targetIndex]['num'],record.num)
+      })
+      const dv = new View().source(staffChartsData)
+      return dv.rows
+    })
   }
 
   addStaff () {

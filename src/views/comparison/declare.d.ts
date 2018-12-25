@@ -1,5 +1,5 @@
 export interface IComparisonItem {
   type: string
-  piece: number | string
-  export: number | string
+  计单: number 
+  出货: number 
 }

@@ -9,28 +9,18 @@ import { IComparisonItem } from './declare.d'
 
 Vue.use(Input)
 
-const chartData = [
-  { time: '10:10', waiting: 2, people: 2 },
-  { time: '10:15', waiting: 6, people: 3 },
-  { time: '10:20', waiting: 2, people: 5 },
-  { time: '10:25', waiting: 9, people: 1 },
-  { time: '10:30', waiting: 2, people: 3 },
-  { time: '10:35', waiting: 2, people: 1 },
-  { time: '10:40', waiting: 1, people: 2 }
-]
-
 @Component
 export default class Comparison extends Vue {
   name = 'Comparison'
   data () {
     return {
-      chartData: chartData,
+      chartData: [],
       scale: [{
-        dataKey: 'piece',
+        dataKey: '计单',
         min: 0,
         max: 200
       }, {
-        dataKey: 'export',
+        dataKey: '出货',
         min: 0,
         max: 200
       }],
@@ -69,29 +59,36 @@ export default class Comparison extends Vue {
     }
   }
   mounted () {
-    // return false
+    this.freshCharts()
+  }
+
+  freshCharts () {
     let chartData: IComparisonItem[] = []
     const pieceRecordList: IRecord[] = Fetch.recordFilter({ date: this.$data.month, unit: 'month', action: 'PIECE_RECORD' })
     const exportRecordList: IRecord[] = Fetch.recordFilter({ date: this.$data.month, unit: 'month', action: 'GOODS_EXPORT' })
-    exportRecordList.forEach((item: IRecord) => {
-      let targetIndex = chartData.findIndex((data: IComparisonItem) => data.type === item.type)
-      if (targetIndex === -1) {
-        chartData.push({ type: item.type, piece: 0, export: 0 })
-        targetIndex = chartData.length - 1
-      }
-      chartData[targetIndex].export = this.$NP.plus(chartData[targetIndex].export, item.num)
-    })
-    pieceRecordList.forEach((item: IRecord) => {
-      let targetIndex = chartData.findIndex((data: IComparisonItem) => data.type === item.type)
-      if (targetIndex === -1) {
-        chartData.push({ type: item.type, piece: 0, export: 0 })
-        targetIndex = chartData.length - 1
-      }
-      chartData[targetIndex].piece = this.$NP.plus(chartData[targetIndex].piece, item.num)
-    })
-    // const max = Math.max(Math.max.apply(pieceRecordList.map((item: IRecord) => parseInt(item.num))), Math.max.apply(exportRecordList.map((item: IRecord) => parseInt(item.num))))
-    // this.$set(this.$data.scale[0], 'max', max + 50)
-    // this.$set(this.$data.scale[1], 'max', max + 50)
-    this.$data.chartData = chartData
+    if (pieceRecordList.length > 0 || exportRecordList.length > 0) {
+      exportRecordList.forEach((item: IRecord) => {
+        let targetIndex = chartData.findIndex((data: IComparisonItem) => data.type === item.type)
+        if (targetIndex === -1) {
+          chartData.push({ type: item.type, '计单': 0, '出货': 0 })
+          targetIndex = chartData.length - 1
+        }
+        chartData[targetIndex]['出货'] = this.$NP.plus(chartData[targetIndex]['出货'], item.num)
+      })
+      pieceRecordList.forEach((item: IRecord) => {
+        let targetIndex = chartData.findIndex((data: IComparisonItem) => data.type === item.type)
+        if (targetIndex === -1) {
+          chartData.push({ type: item.type, '计单': 0, '出货': 0 })
+          targetIndex = chartData.length - 1
+        }
+        chartData[targetIndex]['计单'] = this.$NP.plus(chartData[targetIndex]['计单'], item.num)
+      })
+      const max = Math.max.apply(Math,chartData.map((item: IComparisonItem) => Math.max(item['出货'],item['计单'])))
+      this.$set(this.$data.scale[0], 'max', max)
+      this.$set(this.$data.scale[1], 'max', max)
+      this.$data.chartData = chartData
+    } else {
+      this.$data.chartData = []
+    }
   }
 }

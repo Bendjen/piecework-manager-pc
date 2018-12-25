@@ -40,11 +40,10 @@
             </p>
           </div>
         </div>
-        <v-chart :forceFit="true" :height="height" style="width:650px;margin:5px auto" :data="data">
+        <v-chart :forceFit="true" :height="height"  style="width:550px;margin:5px auto" :data="chartsData[index]">
           <v-tooltip/>
           <v-axis/>
-          <v-legend/>
-          <v-stack-bar position="月份*月均降雨量" color="name"/>
+          <v-bar position="type*num" :label="label" color="type"/>
         </v-chart>
       </el-carousel-item>
     </el-carousel>
