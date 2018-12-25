@@ -5,8 +5,7 @@ import { Table, TableColumn, Input } from 'element-ui'
 import * as ItemType from '@/utils/ItemType'
 import * as Fetch from '@/utils/Fetch'
 import * as Record from '@/utils/Record'
-import { IRecord, IStaff } from '@/declare.d.ts'
-import { View } from '@antv/data-set'
+import g2Config from './g2.config'
 
 interface IExportSummaryItem {
   type: string
@@ -22,28 +21,13 @@ export default class Delivery extends Vue {
   name = 'Delivery'
   data () {
     return {
+      g2Config,
       exportSummary: [],
       addItemDialog: false,
       itemListDialog: false,
       itemList: [],
       cmd: '',
-      newItem: { name: '', price: '' },
-      scale: [
-        {
-          dataKey: 'num',
-          tickInterval: 50
-        }
-      ],
-      label : [
-        'num', {
-          labelEmit: true,
-          textStyle: {
-            fill: '#8c8c8c'
-          }
-        }
-      ],
-      color: ['type'],
-      height: 600
+      newItem: { name: '', price: '' }
     }
   }
   mounted () {
@@ -58,7 +42,7 @@ export default class Delivery extends Vue {
   freshTable () {
     let exportSummary = Fetch.exportSummary(new Date(), 'day')
     this.$set(this.$data,'exportSummary',exportSummary)
-    this.$set(this.$data.scale[0],'max',Math.max.apply(Math,exportSummary.map((item: IExportSummaryItem) => item.num)) + 50)
+    this.$set(this.$data.g2Config.scale[0],'max',Math.max.apply(Math,exportSummary.map((item: IExportSummaryItem) => item.num)) + 50)
   }
 
   doCommand (event: any) {

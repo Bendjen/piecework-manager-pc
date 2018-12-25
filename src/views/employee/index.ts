@@ -4,6 +4,7 @@ import { Component } from 'vue-property-decorator'
 import { Carousel, CarouselItem, Dialog } from 'element-ui'
 import * as Fetch from '@/utils/Fetch'
 import * as Staff from '@/utils/Staff'
+import g2Config from './g2.config'
 
 Vue.use(Carousel)
 Vue.use(CarouselItem)
@@ -17,18 +18,10 @@ export default class Employee extends Vue {
   name = 'Employee'
   data () {
     return {
+      g2Config,
       chartsData: [],
       staffList: [],
-      height: 380,
       addStaffDialog: false,
-      label : [
-        'num', {
-          labelEmit: true,
-          textStyle: {
-            fill: '#8c8c8c'
-          }
-        }
-      ],
       newStaff: {
         name: '',
         short: ''

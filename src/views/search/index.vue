@@ -6,13 +6,13 @@
         <el-select v-model="params.action" filterable placeholder="请选择">
           <el-option
             v-for="item in actionList"
-            :key="item"
-            :label="item"
-            :value="item"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
           ></el-option>
         </el-select>
       </div>
-      <div flex="cross:center" class="searchItem" v-if="params.action === '计单'">
+      <div flex="cross:center" class="searchItem" v-if="params.action === 'PIECE_RECORD'">
         <span>员工：</span>
         <el-select v-model="params.staff" filterable placeholder="请选择">
           <el-option
@@ -41,11 +41,11 @@
       <el-button type="primary" @click='filter'>筛选</el-button>
     </div>
     <div style="margin-top:60px;">
-      <v-chart :forceFit="true" :height="height" :data="chartsData">
-        <v-legend :custom="true" :clickable="false" :items="items"/>
+      <v-chart :forceFit="true" :height="g2Config.height" :data="chartsData">
+        <v-legend :custom="true" :clickable="false" :items="g2Config.items"/>
         <v-axis/>
         <v-tooltip/>
-        <v-bar position="type*money" shape="waterfall" :color="color" :tooltip="tooltip"/>
+        <v-bar position="time*num" shape="waterfall" :color="g2Config.color"  :tooltip="g2Config.tooltip"/>
       </v-chart>
     </div>
   </div>

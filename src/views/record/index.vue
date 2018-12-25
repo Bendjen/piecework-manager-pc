@@ -11,12 +11,12 @@
             </p>
         </div>
         <div v-if='ifCharts'>
-            <v-chart :forceFit="true" :height="chartHeight" :data="chartsData" >
+            <v-chart :forceFit="true" :height="g2Config.height" :data="chartsData" >
                 <v-coord type="rect" direction="LB" />
                 <v-tooltip />
                 <v-legend />
-                <v-axis dataKey="name" :label="label" />
-                <v-stack-bar position="name*数量" color="工种" />
+                <v-axis dataKey="name" :label="g2Config.label" />
+                <v-stack-bar :position="g2Config.position" :color="g2Config.color" />
             </v-chart>
             <!-- <v-plugin>
                 <v-slider :width="26" height="auto"

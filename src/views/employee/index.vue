@@ -40,10 +40,10 @@
             </p>
           </div>
         </div>
-        <v-chart :forceFit="true" :height="height"  style="width:550px;margin:5px auto" :data="chartsData[index]">
+        <v-chart :forceFit="true" :height="g2Config.height"  style="width:550px;margin:5px auto" :data="chartsData[index]">
           <v-tooltip/>
           <v-axis/>
-          <v-bar position="type*num" :label="label" color="type"/>
+          <v-bar :position="g2Config.position" :label="g2Config.label" :color="g2Config.color"/>
         </v-chart>
       </el-carousel-item>
     </el-carousel>

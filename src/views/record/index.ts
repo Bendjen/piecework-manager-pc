@@ -5,8 +5,8 @@ import { Table, TableColumn, Input } from 'element-ui'
 import { IRecord, IStaff } from '@/declare.d.ts'
 import * as Record from '@/utils/Record'
 import * as Fetch from '@/utils/Fetch'
-// import data from '@/data'
 import { View } from '@antv/data-set'
+import g2Config from './g2.config'
 
 Vue.use(Table)
 Vue.use(TableColumn)
@@ -22,9 +22,8 @@ export default class PieceRecord extends Vue {
       tableData: [],
       ifCharts: true,
       chartsData: [],
-      label: { offset: 12 },
-      cmd: '',
-      chartHeight: 620
+      g2Config: g2Config,
+      cmd: ''
     }
   }
   mounted () {
