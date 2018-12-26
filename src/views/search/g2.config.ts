@@ -84,7 +84,7 @@ export default function () {
     }
   }]
 
-  const height = 200
+  const height = 600
 
   return { items, color, tooltip, height }
 }

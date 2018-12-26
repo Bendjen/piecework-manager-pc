@@ -42,10 +42,10 @@
     </div>
     <div style="margin-top:60px;">
       <v-chart :forceFit="true" :height="g2Config.height" :data="chartsData">
-        <v-legend :custom="true" :clickable="false" :items="g2Config.items"/>
+        <v-legend :custom="true" :items="g2Config.items"/>
         <v-axis/>
-        <v-tooltip/>
-        <v-bar position="time*num" shape="waterfall" :color="g2Config.color"  :tooltip="g2Config.tooltip"/>
+        <v-tooltip />
+        <v-bar position="time*num" shape="waterfall" :color="g2Config.color"  :onClick='editRecord'/>
       </v-chart>
     </div>
   </div>

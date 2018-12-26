@@ -35,7 +35,7 @@ export function recordFilter ({
   let targetMonthStart = dayjs(date).startOf(unit)
   let targetMonthEnd = dayjs(date).endOf(unit)
   let result = list.filter((item: any) => {
-    const staffFilter = staff ? item.action === action : true
+    const staffFilter = staff ? item.staff === staff : true
     const typeFilter = type ? item.type === type : true
     return (
       dayjs(item.time).isAfter(targetMonthStart) &&

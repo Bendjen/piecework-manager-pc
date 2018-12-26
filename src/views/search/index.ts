@@ -58,4 +58,7 @@ export default class Search extends Vue {
       this.$data.chartsData = chartsData
     }
   }
+  editRecord (data: any) {
+    console.log(data)
+  }
 }

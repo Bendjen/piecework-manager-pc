@@ -3,5 +3,6 @@ module.exports = {
     config.externals = {
       'viser-vue': 'ViserVue',
     }
+    baseUrl = '';
   }
 }
