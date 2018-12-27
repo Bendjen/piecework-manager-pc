@@ -4,7 +4,7 @@ import { Component } from 'vue-property-decorator'
 import { Carousel, CarouselItem, Dialog } from 'element-ui'
 import * as Fetch from '@/utils/Fetch'
 import * as Staff from '@/utils/Staff'
-import g2Config from './g2.config'
+import G2Init from './g2'
 
 Vue.use(Carousel)
 Vue.use(CarouselItem)
@@ -18,8 +18,7 @@ export default class Employee extends Vue {
   name = 'Employee'
   data () {
     return {
-      g2Config,
-      chartsData: [],
+      charts: [],
       staffList: [],
       addStaffDialog: false,
       newStaff: {
@@ -35,16 +34,16 @@ export default class Employee extends Vue {
   freshStaffList (index?: any) {
     const staffList = Fetch.staffList()
     this.$set(this.$data, 'staffList', staffList)
-    this.freshChartsDate()
     setTimeout(() => {
       let $carousel: any = this.$refs.carousel
       $carousel.setActiveItem(index || 0)
-    }, 300)
+      this.freshChartsDate()
+    }, 100)
   }
 
   freshChartsDate () {
     const MonthPieceRecord = Fetch.recordFilter({ date: new Date(),unit: 'month',action: 'PIECE_RECORD' })
-    this.$data.chartsData = this.$data.staffList.map((item: IStaff) => {
+    const chartsData = this.$data.staffList.map((item: IStaff) => {
       let staffChartsData: any = []
       const staffRecord = MonthPieceRecord.filter((record: IRecord) => record.staff === item.name)
       staffRecord.forEach((record: IRecord) => {
@@ -57,6 +56,16 @@ export default class Employee extends Vue {
       })
       const dv = new View().source(staffChartsData)
       return dv.rows
+    })
+    chartsData.forEach((item: any,index: number) => {
+      const targetIndex = this.$data.charts.findIndex((chartItem: any) => chartItem.id === `chart${index}`)
+      if (targetIndex === -1) {
+        const chart = G2Init(`chart${index}`)
+        chart.changeData(item)
+        this.$set(this.$data.charts,targetIndex,{ id: `chart${index}`,chart: chart })
+      } else {
+        this.$data.charts[targetIndex].chart.changeData(item)
+      }
     })
   }
 

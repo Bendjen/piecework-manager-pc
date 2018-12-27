@@ -40,11 +40,12 @@
             </p>
           </div>
         </div>
-        <v-chart :forceFit="true" :height="g2Config.height"  style="width:550px;margin:5px auto" :data="chartsData[index]">
+        <div :id="`chart${index}`" style="width:550px;margin:5px auto"></div>
+        <!-- <v-chart :forceFit="true" :height="g2Config.height"  style="width:550px;margin:5px auto" :data="chartsData[index]">
           <v-tooltip/>
           <v-axis/>
           <v-bar :position="g2Config.position" :label="g2Config.label" :color="g2Config.color"/>
-        </v-chart>
+        </v-chart> -->
       </el-carousel-item>
     </el-carousel>
    <div v-else class='promptText' flex='main:center cross:center'>没有员工信息，请点击右上角添加员工进行添加</div>

@@ -7,6 +7,7 @@ import * as Record from '@/utils/Record'
 import * as Fetch from '@/utils/Fetch'
 import { View } from '@antv/data-set'
 import g2Config from './g2.config'
+import G2Init from './g2'
 
 Vue.use(Table)
 Vue.use(TableColumn)
@@ -21,12 +22,13 @@ export default class PieceRecord extends Vue {
       staffList: [],
       tableData: [],
       ifCharts: true,
-      chartsData: [],
+      chart: null,
       g2Config: g2Config,
       cmd: ''
     }
   }
   mounted () {
+    this.$data.chart = G2Init()
     this.$data.itemList = Fetch.itemTypeList()
     this.$data.staffList = Fetch.staffList()
     this.freshTable()
@@ -54,7 +56,7 @@ export default class PieceRecord extends Vue {
       value: '数量',
       retains: ['name']
     })
-    this.$set(this.$data, 'chartsData', dv.rows)
+    this.$data.chart.changeData(dv.rows)
     this.$set(this.$data, 'tableData', tableData)
   }
 

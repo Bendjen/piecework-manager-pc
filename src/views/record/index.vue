@@ -10,31 +10,11 @@
                 <i :class="ifCharts?'el-icon-tickets':'el-icon-picture-outline'" @click='ifCharts = !ifCharts'></i>
             </p>
         </div>
-        <div v-if='ifCharts'>
-            <v-chart :forceFit="true" :height="g2Config.height" :data="chartsData" >
-                <v-coord type="rect" direction="LB" />
-                <v-tooltip />
-                <v-legend />
-                <v-axis dataKey="name" :label="g2Config.label" />
-                <v-stack-bar :position="g2Config.position" :color="g2Config.color" />
-            </v-chart>
-            <!-- <v-plugin>
-                <v-slider :width="26" height="auto"
-                    :data="originDv" x-axis="num" y-axis="name" :scales="{
-                    time: {
-                        type: 'name',
-                        tickCount: 10,
-                        mask: 'M/DD H:mm'
-                    }
-                    }"
-                    :background-chart="{
-                    type: 'line'
-                    }"
-                    :on-change="slideChange"/>
-            </v-plugin> -->
+        <div v-show='ifCharts'>
+            <div id='chart'></div>
         </div>
 
-        <el-table :data="tableData" border style="width:100%" :max-height="chartHeight" v-else>
+        <el-table :data="tableData" border style="width:100%" :max-height="600" v-show='!ifCharts'>
             <el-table-column label="员工/工种"  width="100" prop="name" fixed style="text-align:center" align="center"> </el-table-column>
             <el-table-column v-for='item in itemList' :key='item.name' :label="item.name" align="center"> 
                 <template  slot-scope="scope" flex='main:center cross:center'>

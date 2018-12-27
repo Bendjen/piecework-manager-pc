@@ -1,7 +1,13 @@
 module.exports = {
   configureWebpack: config => {
     config.externals = {
-      'viser-vue': 'ViserVue',
+      '@antv/data-set': 'DataSet',
+      '@antv/g2': 'G2',
+      'dayjs': 'dayjs',
+      'file-saver': 'FileSaver',
+      'store': 'store',
+      // 'vue': 'Vue',
+      // 'vue-router': 'Router',
     }
     baseUrl = '';
   }

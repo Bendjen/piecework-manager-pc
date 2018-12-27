@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './app/index.vue'
 import router from './router'
-import 'flex.css'
+// import 'flex.css'
 import ViserVue from 'viser-vue'
 import NP from 'number-precision'
 import { MessageBox, Notification, Loading } from 'element-ui'

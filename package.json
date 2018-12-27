@@ -9,13 +9,13 @@
   },
   "dependencies": {
     "@antv/data-set": "^0.10.1",
+    "@antv/g2": "^3.4.8",
     "dayjs": "^1.7.7",
     "element-ui": "^2.4.5",
     "file-saver": "^2.0.0",
     "flex.css": "^1.1.7",
     "number-precision": "^1.2.0",
     "store": "^2.0.12",
-    "viser-vue": "^2.4.1",
     "vue": "^2.5.17",
     "vue-property-decorator": "^7.2.0",
     "vue-router": "^3.0.1"

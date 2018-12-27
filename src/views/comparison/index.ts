@@ -6,7 +6,7 @@ import * as Fetch from '@/utils/Fetch'
 import dayjs from 'dayjs'
 import { IRecord } from '@/declare'
 import { IComparisonItem } from './declare.d'
-import g2Config from './g2.config'
+import G2Init from './g2'
 
 Vue.use(Input)
 
@@ -15,21 +15,12 @@ export default class Comparison extends Vue {
   name = 'Comparison'
   data () {
     return {
-      g2Config,
-      chartData: [],
-      scale: [{
-        dataKey: '计单',
-        min: 0,
-        max: 200
-      }, {
-        dataKey: '出货',
-        min: 0,
-        max: 200
-      }],
+      chart: null,
       month: dayjs().format('YYYY-MM')
     }
   }
   mounted () {
+    this.$data.chart = G2Init()
     this.freshCharts()
   }
 
@@ -55,11 +46,11 @@ export default class Comparison extends Vue {
         chartData[targetIndex]['计单'] = this.$NP.plus(chartData[targetIndex]['计单'], item.num)
       })
       const max = Math.max.apply(Math,chartData.map((item: IComparisonItem) => Math.max(item['出货'],item['计单'])))
-      this.$set(this.$data.scale[0], 'max', max)
-      this.$set(this.$data.scale[1], 'max', max)
-      this.$data.chartData = chartData
+      this.$data.chart.scale('计单',{ max: max + 50 })
+      this.$data.chart.scale('出货',{ max: max + 50 })
+      this.$data.chart.changeData(chartData)
     } else {
-      this.$data.chartData = []
+      this.$data.chart.changeData([])
     }
   }
 }

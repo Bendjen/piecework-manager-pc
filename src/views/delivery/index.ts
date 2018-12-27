@@ -5,7 +5,7 @@ import { Table, TableColumn, Input } from 'element-ui'
 import * as ItemType from '@/utils/ItemType'
 import * as Fetch from '@/utils/Fetch'
 import * as Record from '@/utils/Record'
-import g2Config from './g2.config'
+import G2Init from './g2'
 
 interface IExportSummaryItem {
   type: string
@@ -21,8 +21,7 @@ export default class Delivery extends Vue {
   name = 'Delivery'
   data () {
     return {
-      g2Config,
-      exportSummary: [],
+      chart: null,
       addItemDialog: false,
       itemListDialog: false,
       itemList: [],
@@ -31,6 +30,7 @@ export default class Delivery extends Vue {
     }
   }
   mounted () {
+    this.$data.chart = G2Init()
     this.freshItemList()
     this.freshTable()
   }
@@ -40,9 +40,11 @@ export default class Delivery extends Vue {
   }
 
   freshTable () {
-    let exportSummary = Fetch.exportSummary(new Date(), 'day')
-    this.$set(this.$data,'exportSummary',exportSummary)
-    this.$set(this.$data.g2Config.scale[0],'max',Math.max.apply(Math,exportSummary.map((item: IExportSummaryItem) => item.num)) + 50)
+    const exportSummary = Fetch.exportSummary(new Date(), 'day')
+    this.$data.chart.scale('num', {
+      max: Math.max.apply(Math, exportSummary.map((item: IExportSummaryItem) => item.num)) + 50
+    })
+    this.$data.chart.changeData(exportSummary)
   }
 
   doCommand (event: any) {

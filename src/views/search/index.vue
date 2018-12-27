@@ -41,12 +41,13 @@
       <el-button type="primary" @click='filter'>筛选</el-button>
     </div>
     <div style="margin-top:60px;">
-      <v-chart :forceFit="true" :height="g2Config.height" :data="chartsData">
+      <div id='chart'></div>
+      <!-- <v-chart :forceFit="true"  :height="g2Config.height" :data="chartsData">
         <v-legend :custom="true" :items="g2Config.items"/>
         <v-axis/>
-        <v-tooltip />
-        <v-bar position="time*num" shape="waterfall" :color="g2Config.color"  :onClick='editRecord'/>
-      </v-chart>
+        <v-tooltip/>
+        <v-bar position="time*num" shape="waterfall" :color="g2Config.color"  ref='bar'/>
+      </v-chart> -->
     </div>
   </div>
 </template>

@@ -15,12 +15,7 @@
         <i class="el-icon-setting" @click="itemListDialog = true"></i>
       </p>
     </div>
-    <v-chart :forceFit="true" :height="g2Config.height" :data="exportSummary" :scale="g2Config.scale">
-      <v-tooltip/>
-      <v-axis/>
-      <v-bar :position="g2Config.position" :label="g2Config.label" :color="g2Config.color"/>
-    </v-chart>
-
+    <div id='chart'></div>
     <el-dialog title="添加型号" :visible.sync="addItemDialog" width="25%">
       <div>
         <p class="line" flex="main:center cross:center">

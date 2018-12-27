@@ -6,7 +6,7 @@ import * as Fetch from '@/utils/Fetch'
 import dayjs from 'dayjs'
 import { IRecord } from '@/declare'
 import { IChartsItem } from './declare.d'
-import G2Config from './g2.config'
+import G2Init from './g2'
 
 Vue.use(Select)
 Vue.use(Option)
@@ -17,8 +17,7 @@ export default class Search extends Vue {
   name = 'Search'
   data () {
     return {
-      chartsData: [],
-      g2Config: G2Config(),
+      chart : null,
       params: {
         action: 'PIECE_RECORD',
         staff: '',
@@ -30,6 +29,13 @@ export default class Search extends Vue {
       itemTypeList: Fetch.itemTypeList()
     }
   }
+  mounted () {
+    // chart.on('interval:click', (ev: any) => {
+    //   alert(1)
+    // })
+    this.$data.chart = G2Init()
+  }
+
   filter () {
     const { action, staff, type, month } = this.$data.params
     let chartsData: any = []
@@ -55,10 +61,8 @@ export default class Search extends Vue {
         lastNum = this.$NP.plus(lastNum, item.num)
       })
       chartsData.push({ time: '合计', num: pieceRecord.reduce((pre: number, cur: IChartsItem) => this.$NP.plus(pre, cur.num), 0) })
-      this.$data.chartsData = chartsData
+      // this.$data.chartsData = chartsData
+      this.$data.chart.changeData(chartsData)
     }
-  }
-  editRecord (data: any) {
-    console.log(data)
   }
 }
