@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import './index.scss'
 import { Component } from 'vue-property-decorator'
-import { Input } from 'element-ui'
+import { Input, DatePicker } from 'element-ui'
 import * as Fetch from '@/utils/Fetch'
 import dayjs from 'dayjs'
 import { IRecord } from '@/declare'
@@ -9,6 +9,7 @@ import { IComparisonItem } from './declare.d'
 import G2Init from './g2'
 
 Vue.use(Input)
+Vue.use(DatePicker)
 
 @Component
 export default class Comparison extends Vue {
@@ -45,9 +46,9 @@ export default class Comparison extends Vue {
         }
         chartData[targetIndex]['计单'] = this.$NP.plus(chartData[targetIndex]['计单'], item.num)
       })
-      const max = Math.max.apply(Math,chartData.map((item: IComparisonItem) => Math.max(item['出货'],item['计单'])))
-      this.$data.chart.scale('计单',{ max: max + 50 })
-      this.$data.chart.scale('出货',{ max: max + 50 })
+      const max = Math.max.apply(Math, chartData.map((item: IComparisonItem) => Math.max(item['出货'], item['计单'])))
+      this.$data.chart.scale('计单', { max: max + 50 })
+      this.$data.chart.scale('出货', { max: max + 50 })
       this.$data.chart.changeData(chartData)
     } else {
       this.$data.chart.changeData([])

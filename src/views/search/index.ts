@@ -26,14 +26,19 @@ export default class Search extends Vue {
       },
       actionList: [{ label: '计单', value: 'PIECE_RECORD' }, { label: '出货', value: 'GOODS_EXPORT' }],
       staffList: Fetch.staffList(),
-      itemTypeList: Fetch.itemTypeList()
+      itemTypeList: Fetch.itemTypeList(),
+      dialogVisible: false
     }
   }
   mounted () {
-    // chart.on('interval:click', (ev: any) => {
-    //   alert(1)
-    // })
+    const vm = this
     this.$data.chart = G2Init()
+    this.$data.chart.on('interval:click',(env: any) => {
+      const targetTime = env.data._origin.time
+      if (targetTime !== '合计') {
+        vm.$data.dialogVisible = true
+      }
+    })
   }
 
   filter () {

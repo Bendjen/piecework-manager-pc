@@ -38,17 +38,18 @@
         <span>时间：</span>
         <el-date-picker v-model="params.month" type="month" placeholder="选择月" :clearable="false"></el-date-picker>
       </div>
-      <el-button type="primary" @click='filter'>筛选</el-button>
+      <el-button type="primary" @click="filter">筛选</el-button>
     </div>
     <div style="margin-top:60px;">
-      <div id='chart'></div>
-      <!-- <v-chart :forceFit="true"  :height="g2Config.height" :data="chartsData">
-        <v-legend :custom="true" :items="g2Config.items"/>
-        <v-axis/>
-        <v-tooltip/>
-        <v-bar position="time*num" shape="waterfall" :color="g2Config.color"  ref='bar'/>
-      </v-chart> -->
+      <div id="chart"></div>
     </div>
+    <el-dialog title="提示" :visible.sync="dialogVisible" width="30%">
+      <span>这是一段信息</span>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 

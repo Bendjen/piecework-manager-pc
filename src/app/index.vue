@@ -4,7 +4,9 @@
     <h1 class="navTitle">{{$route.meta.title}}</h1>
     <div class="container" flex="main:center cross:center">
       <div class="wrapper">
-        <router-view></router-view>
+        <!-- <transition name="slide">  -->
+          <router-view></router-view>
+        <!-- </transition>  -->
       </div>
     </div>
   </div>

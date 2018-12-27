@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import App from './app/index.vue'
 import router from './router'
-// import 'flex.css'
-import ViserVue from 'viser-vue'
+// import 'flex.css'`
+// import ViserVue from 'viser-vue'
 import NP from 'number-precision'
-import { MessageBox, Notification, Loading } from 'element-ui'
+import { MessageBox, Notification, Loading,Dialog } from 'element-ui'
 import InitData from '@/utils/InitData'
 
 let _loadingInstance: any = null
@@ -28,7 +28,7 @@ Vue.prototype.$Loading = {
 
 Vue.config.productionTip = false
 
-Vue.use(ViserVue)
+Vue.use(Dialog)
 
 InitData()
 
