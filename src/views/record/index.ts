@@ -6,7 +6,6 @@ import { IRecord, IStaff } from '@/declare.d.ts'
 import * as Record from '@/utils/Record'
 import * as Fetch from '@/utils/Fetch'
 import { View } from '@antv/data-set'
-import g2Config from './g2.config'
 import G2Init from './g2'
 
 Vue.use(Table)
@@ -23,7 +22,6 @@ export default class PieceRecord extends Vue {
       tableData: [],
       ifCharts: true,
       chart: null,
-      g2Config: g2Config,
       cmd: ''
     }
   }
@@ -58,6 +56,11 @@ export default class PieceRecord extends Vue {
     })
     this.$data.chart.changeData(dv.rows)
     this.$set(this.$data, 'tableData', tableData)
+  }
+
+  switchMode () {
+    this.$data.ifCharts = !this.$data.ifCharts
+    this.freshTable()
   }
 
   cellClick (row: any, column: any, cell: any) {

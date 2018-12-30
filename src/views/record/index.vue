@@ -7,7 +7,7 @@
             </p>
             <p flex='cross:center'>
                 <span style='padding-right:10px;'>切换到{{ifCharts?'表格模式':'图表模式'}}：</span>
-                <i :class="ifCharts?'el-icon-tickets':'el-icon-picture-outline'" @click='ifCharts = !ifCharts'></i>
+                <i :class="ifCharts?'el-icon-tickets':'el-icon-picture-outline'" @click='switchMode'></i>
             </p>
         </div>
         <div v-show='ifCharts'>

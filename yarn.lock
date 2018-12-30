@@ -8,26 +8,11 @@
   dependencies:
     "@antv/util" "~1.3.1"
 
-"@antv/attr@~0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@antv/attr/-/attr-0.1.0.tgz#68734b0557d9392645e947342acc8fca370d4a56"
-  dependencies:
-    "@antv/util" "~1.3.1"
-
 "@antv/attr@~0.1.2":
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/@antv/attr/-/attr-0.1.2.tgz#2eeb122fcaaf851a2d8749abc7c60519d3f77e37"
   dependencies:
     "@antv/util" "~1.3.1"
-
-"@antv/component@~0.2.1":
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/@antv/component/-/component-0.2.1.tgz#e3ef27fcd0aa0f6a76859a63c7a2578a365920bf"
-  dependencies:
-    "@antv/attr" "~0.1.0"
-    "@antv/g" "~3.3.3"
-    "@antv/util" "~1.3.1"
-    wolfy87-eventemitter "~5.1.0"
 
 "@antv/component@~0.3.1":
   version "0.3.1"
@@ -66,27 +51,9 @@
     topojson-client "~3.0.0"
     wolfy87-eventemitter "~5.1.0"
 
-"@antv/g2-brush@^0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@antv/g2-brush/-/g2-brush-0.0.2.tgz#0b65f3ebbf82690202913d0b6759ab2900faa841"
-
-"@antv/g2-plugin-slider@^2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@antv/g2-plugin-slider/-/g2-plugin-slider-2.1.0.tgz#7f2f5879d33dcfb14dd2b955092ca198ad9152b9"
-
-"@antv/g2@^3.3.0":
-  version "3.3.4"
-  resolved "https://registry.yarnpkg.com/@antv/g2/-/g2-3.3.4.tgz#caa96b644957ff97b18c9c1d7c34835009530496"
-  dependencies:
-    "@antv/adjust" "~0.1.0"
-    "@antv/attr" "~0.1.0"
-    "@antv/component" "~0.2.1"
-    "@antv/coord" "~0.1.0"
-    "@antv/g" "~3.3.4"
-    "@antv/scale" "~0.1.0"
-    "@antv/util" "~1.3.1"
-    venn.js "~0.2.20"
-    wolfy87-eventemitter "~5.1.0"
+"@antv/g2-plugin-slider@^2.1.1":
+  version "2.1.1"
+  resolved "http://registry.npm.taobao.org/@antv/g2-plugin-slider/download/@antv/g2-plugin-slider-2.1.1.tgz#c20c5f1cf085bea478f8ab1fc84837e45c46a065"
 
 "@antv/g2@^3.4.8":
   version "3.4.8"
@@ -100,17 +67,6 @@
     "@antv/scale" "~0.1.0"
     "@antv/util" "~1.3.1"
     venn.js "~0.2.20"
-    wolfy87-eventemitter "~5.1.0"
-
-"@antv/g@~3.3.3", "@antv/g@~3.3.4":
-  version "3.3.4"
-  resolved "https://registry.yarnpkg.com/@antv/g/-/g-3.3.4.tgz#46cb6ae5fe0b6e1937f6ab384318d97a737385ad"
-  dependencies:
-    "@antv/gl-matrix" "~2.7.1"
-    "@antv/util" "~1.3.1"
-    d3-ease "~1.0.3"
-    d3-interpolate "~1.1.5"
-    d3-timer "~1.0.6"
     wolfy87-eventemitter "~5.1.0"
 
 "@antv/g@~3.3.5":
@@ -756,25 +712,9 @@
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.2.tgz#54c5a964462be3d4d78af631363c18d6fa91ac26"
 
-"@types/d3-format@*":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@types/d3-format/-/d3-format-1.3.0.tgz#c5e115fac8e6861ce656fe9861892b22f6b0cfcb"
-
 "@types/file-saver@^2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@types/file-saver/-/file-saver-2.0.0.tgz#cbb49815a5e1129d5f23836a98d65d93822409af"
-
-"@types/lodash@*":
-  version "4.14.118"
-  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.118.tgz#247bab39bfcc6d910d4927c6e06cbc70ec376f27"
-
-"@types/node@*":
-  version "10.12.3"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.3.tgz#3918b73ceed484e58367be5acb79d1775239e393"
-
-"@types/node@^8.0.53":
-  version "8.10.37"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-8.10.37.tgz#d2db49dc6a4e087c3245f22b92061f22494771e5"
 
 "@types/store@^2.0.1":
   version "2.0.1"
@@ -2322,10 +2262,6 @@ d3-dsv@~1.0.5:
 d3-ease@1, d3-ease@~1.0.3:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/d3-ease/-/d3-ease-1.0.5.tgz#8ce59276d81241b1b72042d6af2d40e76d936ffb"
-
-d3-format@^1.3.0:
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/d3-format/-/d3-format-1.3.2.tgz#6a96b5e31bcb98122a30863f7d92365c00603562"
 
 d3-geo-projection@~2.1.2:
   version "2.1.2"
@@ -6938,27 +6874,6 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
-viser-vue@^2.4.1:
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/viser-vue/-/viser-vue-2.4.1.tgz#675db39b0935c1892a680a65e5704b0ec499f443"
-  dependencies:
-    "@types/node" "*"
-    viser "^2.0.0"
-    vue "^2.5.3"
-
-viser@^2.0.0:
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/viser/-/viser-2.4.1.tgz#caf3bdf6446710ca1632668d11ed2ff0d7f83492"
-  dependencies:
-    "@antv/g2" "^3.3.0"
-    "@antv/g2-brush" "^0.0.2"
-    "@antv/g2-plugin-slider" "^2.1.0"
-    "@types/d3-format" "*"
-    "@types/lodash" "*"
-    "@types/node" "^8.0.53"
-    d3-format "^1.3.0"
-    lodash "^4.17.4"
-
 vm-browserify@0.0.4:
   version "0.0.4"
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-0.0.4.tgz#5d7ea45bbef9e4a6ff65f95438e0a87c357d5a73"
@@ -7015,7 +6930,7 @@ vue-template-es2015-compiler@^1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.6.0.tgz#dc42697133302ce3017524356a6c61b7b69b4a18"
 
-vue@^2.5.17, vue@^2.5.3:
+vue@^2.5.17:
   version "2.5.17"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.17.tgz#0f8789ad718be68ca1872629832ed533589c6ada"
 

@@ -23,13 +23,13 @@ export default new Router({
       path: '/record',
       name: 'record',
       component: () => import('./views/record/index.vue'),
-      meta: { title: '计单' }
+      meta: { title: '当日记单' }
     },
     {
       path: '/delivery',
       name: 'delivery',
       component:  () => import('./views/delivery/index.vue'),
-      meta: { title: '出货报表' }
+      meta: { title: '当日出货' }
     },
     {
       path: '/setting',
@@ -47,7 +47,7 @@ export default new Router({
       path: '/comparison',
       name: 'comparison',
       component:  () => import('./views/comparison/index.vue'),
-      meta: { title: '报表核对' }
+      meta: { title: '当月核对' }
     }
   ]
 })

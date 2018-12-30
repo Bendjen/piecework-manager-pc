@@ -7,7 +7,16 @@ export default function () {
   })
   chart.source([])
   chart.coord('rect').transpose()
-  chart.intervalStack().position('name*数量').color('工种')
+  chart
+    .intervalStack()
+    .position('name*数量')
+    .color('工种')
+    .style({
+      cursor: 'pointer'
+    })
   chart.render()
+  chart.on('interval:click', (ev: any) => {
+    console.log(ev)
+  })
   return chart
 }

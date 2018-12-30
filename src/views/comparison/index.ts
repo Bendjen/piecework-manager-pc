@@ -22,6 +22,22 @@ export default class Comparison extends Vue {
   }
   mounted () {
     this.$data.chart = G2Init()
+    this.$data.chart.on('interval:dblclick', (env: any) => {
+      const { type } = env.data._origin
+      this.$router.push({ name: 'search',params: {
+        action: 'GOODS_EXPORT',
+        type: type,
+        month: this.$data.month
+      } })
+    })
+    this.$data.chart.on('point:dblclick', (env: any) => {
+      const { type } = env.data._origin
+      this.$router.push({ name: 'search',params: {
+        action: 'PIECE_RECORD',
+        type: type,
+        month: this.$data.month
+      } })
+    })
     this.freshCharts()
   }
 
