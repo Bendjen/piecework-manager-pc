@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import './index.scss'
 import { Component } from 'vue-property-decorator'
-import FileSaver from 'file-saver'
+// import FileSaver from 'file-saver'
+
 import store from 'store'
 import dayjs from 'dayjs'
 
@@ -63,7 +64,7 @@ export default class Setting extends Vue {
         'ITEM_TYPE_LIST': store.get('ITEM_TYPE_LIST') || []
       }
       let file = new File([JSON.stringify(PieceManagerLocaStorage)], `${dayjs().format('导出数据YY-MM-DD')}.json`, { type: 'json/plain;charset=utf-8' })
-      FileSaver.saveAs(file)
+      window.saveAs(file)
     } catch (err) {
       this.$MessageBox.alert('浏览器不支持导出文件，请切换到主流浏览器后再次尝试', '错误')
     }
