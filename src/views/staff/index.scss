@@ -13,6 +13,28 @@
 .el-carousel__item:nth-child(2n+1) {
   background-color: #d3dce6;
 }
+.popper{
+  border-radius: 10px;
+  background: #404040;
+  color:#fff;
+  p{
+    margin: 5px;
+  }
+  .type,.total{
+    color: #dd6161;
+    padding-right: 10px;
+    font-weight: bold;
+  }
+  em{
+    padding: 0 5px;
+  }
+  .num{
+    color:#409eff;
+  }
+  .price{
+    color:#409eff;
+  }
+}
 
 .employeeContainer{
     position:relative;
@@ -83,4 +105,29 @@
 .promptText{
     font-size: 26px;
     height: 80%;
+}
+.salaryDialog{
+  .content{
+    .thead{
+      background: #409eff;
+      padding: 10px 0;
+      span{
+        color:#fff;
+      }
+    }
+    p{
+      margin-bottom:20px; 
+    }
+    span{
+      display: inline-block;
+      width: 100px;
+    }
+    i{
+      font-size: 18px;
+      position: relative;
+      top: 3px;
+      color: #409eff;
+      cursor: pointer;
+    }
+  }
 }
