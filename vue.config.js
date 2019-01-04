@@ -10,6 +10,6 @@ module.exports = {
       // 'vue': 'Vue',
       // 'vue-router': 'Router',
     }
-    baseUrl = '';
-  }
+  },
+  baseUrl: process.env.NODE_ENV === 'production' ? '' : '/'
 }
