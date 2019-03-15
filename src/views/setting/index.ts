@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import './index.scss'
 import { Component } from 'vue-property-decorator'
+import Clear from '@/utils/Clear'
+import Mock from '@/utils/Mock'
 // import FileSaver from 'file-saver'
 
 import store from 'store'
@@ -42,6 +44,26 @@ export default class Setting extends Vue {
         }
       }
     }
+  }
+
+  clearData () {
+    this.$MessageBox.confirm('清除后数据讲无法恢复，确认要这么做吗?', '提示', {
+      confirmButtonText: '确定',
+      cancelButtonText: '取消',
+      type: 'warning'
+    }).then(() => {
+      Clear()
+    })
+  }
+
+  shakeData () {
+    this.$MessageBox.confirm('随机生成数据可能会覆盖原有的数据，确认要这么做吗?', '提示', {
+      confirmButtonText: '确定',
+      cancelButtonText: '取消',
+      type: 'warning'
+    }).then(() => {
+      Mock()
+    })
   }
 
   importData () {

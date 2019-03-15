@@ -21,7 +21,7 @@ export default class Search extends Vue {
     return {
       chart: null,
       params: {
-        action: 'PIECE_RECORD',
+        action: 'GOODS_EXPORT',
         staff: '所有',
         type: '所有',
         month: dayjs().format('YYYY-MM')
@@ -64,6 +64,8 @@ export default class Search extends Vue {
       this.$set(this.$data.params,'action',action)
       this.$set(this.$data.params,'type',type)
       this.$set(this.$data.params,'month',month)
+      this.filter()
+    } else {
       this.filter()
     }
   }
