@@ -1,26 +1,32 @@
-# vue-project
+# Piecework-Manager
 
-## Project setup
+## GitPage
+```
+https://bendjen.github.io/Piecework-Manager-pc/
+```
+
+### Dependencies
+```
+vue / typeScript / @antv/g2 / element-ui / 
+```
+
+### Introduction
+```
+A piecework manager for my mom.
+```
+
+### Project setup
 ```
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+### Introduction
 ```
 yarn run serve
 ```
 
-### Compiles and minifies for production
+### Introduction
 ```
 yarn run build
 ```
 
-### Run your tests
-```
-yarn run test
-```
-
-### Lints and fixes files
-```
-yarn run lint
-```

@@ -6,4 +6,4 @@ declare module '*.vue' {
 
 declare module '@antv/data-set'
 declare module '@antv/g2-plugin-slider'
-declare module '@antv/g2"'
+declare module '@antv/g2'
