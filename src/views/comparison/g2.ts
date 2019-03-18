@@ -47,24 +47,24 @@ export default function () {
     })
   chart.render()
 
-  const slider = new Slider({
-    container: 'slider', // dom 容器 id 或者 dom 容器对象
-    width: 600, // slider 的宽度，默认为 'auto'，即自适应宽度
-    height: 26, // slider 的高度，默认为 '26px'
-    padding: [ 20, 120, 100 ], // slider 所在画布 canvas 的内边距，用于对齐图表，默认与图表默认的 padding 相同
-    start: '2015-04-07', // 和状态量对应，滑块的起始点数值，如果是时间类型，建议将其转换为时间戳，方便数据过滤
-    end: '2015-08-01', // 和状态量对应，滑块的结束点数值，如果是时间类型，建议将其转换为时间戳，方便数据过滤
-    minSpan: 30 * 24 * 60 * 60 * 1000, // 可选，用于设置滑块的最小范围，时间类型的数值必须使用时间戳，这里设置最小范围为 30 天
-    maxSpan: 120 * 24 * 60 * 60 * 1000, // 可选，用于设置滑块的最大范围，时间类型的数值必须使用时间戳，这里设置最大范围为 120 天
-    data: [], // slider 的数据源
-    xAxis: 'time', // 背景图的横轴对应字段，同时为数据筛选的字段
-    yAxis: 'volumn' // 背景图的纵轴对应字段
-    // onChange: ({ startValue, endValue }) => {
-    //   ds.setState('start', startValue)
-    //   ds.setState('end', endValue)
-    // } // 更新数据状态量的回调函数
-  })
-  slider.render() // 渲染
+  // const slider = new Slider({
+  //   container: 'slider', // dom 容器 id 或者 dom 容器对象
+  //   width: 600, // slider 的宽度，默认为 'auto'，即自适应宽度
+  //   height: 26, // slider 的高度，默认为 '26px'
+  //   padding: [ 20, 120, 100 ], // slider 所在画布 canvas 的内边距，用于对齐图表，默认与图表默认的 padding 相同
+  //   start: '2015-04-07', // 和状态量对应，滑块的起始点数值，如果是时间类型，建议将其转换为时间戳，方便数据过滤
+  //   end: '2015-08-01', // 和状态量对应，滑块的结束点数值，如果是时间类型，建议将其转换为时间戳，方便数据过滤
+  //   minSpan: 30 * 24 * 60 * 60 * 1000, // 可选，用于设置滑块的最小范围，时间类型的数值必须使用时间戳，这里设置最小范围为 30 天
+  //   maxSpan: 120 * 24 * 60 * 60 * 1000, // 可选，用于设置滑块的最大范围，时间类型的数值必须使用时间戳，这里设置最大范围为 120 天
+  //   data: [], // slider 的数据源
+  //   xAxis: 'time', // 背景图的横轴对应字段，同时为数据筛选的字段
+  //   yAxis: 'volumn' // 背景图的纵轴对应字段
+  //   // onChange: ({ startValue, endValue }) => {
+  //   //   ds.setState('start', startValue)
+  //   //   ds.setState('end', endValue)
+  //   // } // 更新数据状态量的回调函数
+  // })
+  // slider.render() // 渲染
 
   return chart
 }

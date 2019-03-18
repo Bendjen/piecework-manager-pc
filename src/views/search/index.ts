@@ -43,6 +43,7 @@ export default class Search extends Vue {
       }
     }
   }
+
   mounted () {
     const vm = this
     this.$data.chart = G2Init()
@@ -60,10 +61,10 @@ export default class Search extends Vue {
       }
     })
     if (this.$route.params.action) {
-      const { action,type,month } = this.$route.params
-      this.$set(this.$data.params,'action',action)
-      this.$set(this.$data.params,'type',type)
-      this.$set(this.$data.params,'month',month)
+      const { action, type, month } = this.$route.params
+      this.$set(this.$data.params, 'action', action)
+      this.$set(this.$data.params, 'type', type)
+      this.$set(this.$data.params, 'month', month)
       this.filter()
     } else {
       this.filter()

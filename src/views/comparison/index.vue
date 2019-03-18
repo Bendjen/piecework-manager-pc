@@ -5,7 +5,7 @@
       <el-date-picker v-model="month" type="month" size='small' style='width:120px;margin-right:20px;'  @change='freshCharts' :clearable="false" placeholder="选择月" value-format='yyyy-MM'></el-date-picker>
     </div>
     <div id='chart'></div>
-    <div id="slider"></div>
+    <!-- <div id="slider"></div> -->
   </div>
 </template>
 

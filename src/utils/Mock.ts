@@ -37,14 +37,12 @@ const itemTypeMockList = [
   { name: '电子类', price: Random.natural(20, 60) },
   { name: '贵奢类', price: Random.natural(100, 200) }
 ]
-Random.extend({
-  constellation: function () {
-    let constellations = [1, 2]
-    return this.pick(constellations)
-  }
-})
 
 export default function () {
+  let randomNumA = 0
+  let randomNumB = 0
+  let randomNumC = 0
+  let randomNumD = 0
   const STAFF_LIST = []
   for (let i = 1; i <= Random.natural(6, 10); i++) {
     STAFF_LIST.push(staffMockList.splice(Random.natural(0, staffMockList.length - 1), 1)[0])
@@ -54,40 +52,44 @@ export default function () {
     ITEM_TYPE_LIST.push(itemTypeMockList.splice(Random.natural(0, itemTypeMockList.length - 1), 1)[0])
   }
   const OPERATION_RECORD_LIST = []
+  // 当日计单
   for (let i = 1; i <= Random.natural(10, 30); i++) {
     OPERATION_RECORD_LIST.push({
       type: ITEM_TYPE_LIST[Random.natural(0, ITEM_TYPE_LIST.length - 1)].name,
       staff: STAFF_LIST[Random.natural(0, STAFF_LIST.length - 1)].name,
       num: Random.natural(1, 20),
-      time: dayjs().subtract(Random.natural(0,600), 'minute'),
+      time: dayjs().subtract(Random.natural(randomNumA, randomNumA += Random.natural(0, 60)), 'minute'),
       action: 'PIECE_RECORD',
       actionName: '员工计单'
     })
   }
-  for (let i = 1; i <= Random.natural(50, 200); i++) {
+  // 两个月内计单
+  for (let i = 1; i <= Random.natural(60, 200); i++) {
     OPERATION_RECORD_LIST.push({
       type: ITEM_TYPE_LIST[Random.natural(0, ITEM_TYPE_LIST.length - 1)].name,
       staff: STAFF_LIST[Random.natural(0, STAFF_LIST.length - 1)].name,
       num: Random.natural(1, 20),
-      time: dayjs().subtract(Random.natural(0,50), 'day'),
+      time: dayjs().subtract(Random.natural(randomNumB, randomNumB += Random.natural(0, 3)), 'day'),
       action: 'PIECE_RECORD',
       actionName: '员工计单'
     })
   }
+  // 当日出货
   for (let i = 1; i <= Random.natural(5, 15); i++) {
     OPERATION_RECORD_LIST.push({
       type: ITEM_TYPE_LIST[Random.natural(0, ITEM_TYPE_LIST.length - 1)].name,
-      num: Random.natural(20, 80),
-      time: dayjs().subtract(Random.natural(0,50), 'minute'),
+      num: Random.natural(10, 20),
+      time: dayjs().subtract(Random.natural(randomNumC, randomNumC += Random.natural(0, 60)), 'minute'),
       action: 'GOODS_EXPORT',
       actionName: '出货'
     })
   }
+  // 两个月内出货
   for (let i = 1; i <= Random.natural(20, 30); i++) {
     OPERATION_RECORD_LIST.push({
       type: ITEM_TYPE_LIST[Random.natural(0, ITEM_TYPE_LIST.length - 1)].name,
-      num: Random.natural(60, 100),
-      time: dayjs().subtract(Random.natural(0,50), 'day'),
+      num: Random.natural(10, 40),
+      time: dayjs().subtract(Random.natural(randomNumD, randomNumD += Random.natural(0, 3)), 'day'),
       action: 'GOODS_EXPORT',
       actionName: '出货'
     })
