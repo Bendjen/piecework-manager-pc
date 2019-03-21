@@ -42,7 +42,7 @@ export default class Delivery extends Vue {
   freshTable () {
     const exportSummary = Fetch.exportSummary(new Date(), 'day')
     this.$data.chart.scale('num', {
-      max: Math.max.apply(Math, exportSummary.map((item: IExportSummaryItem) => item.num)) + 50
+      max: Math.max.apply(Math, exportSummary.map((item: IExportSummaryItem) => item.num))
     })
     this.$data.chart.changeData(exportSummary)
   }

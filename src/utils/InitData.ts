@@ -25,6 +25,8 @@ export default function initData () {
 
   if (staffList.length === 0 && itemTypeList.length === 0 && operatiobRecordList.length === 0) {
     Mock()
+  } else if (location.href.includes('MOCK_FLAG')) {
+    Mock()
   }
 
 }

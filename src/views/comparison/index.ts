@@ -63,8 +63,8 @@ export default class Comparison extends Vue {
         chartData[targetIndex]['计单'] = this.$NP.plus(chartData[targetIndex]['计单'], item.num)
       })
       const max = Math.max.apply(Math, chartData.map((item: IComparisonItem) => Math.max(item['出货'], item['计单'])))
-      this.$data.chart.scale('计单', { max: max + 50 })
-      this.$data.chart.scale('出货', { max: max + 50 })
+      this.$data.chart.scale('计单', { max: max })
+      this.$data.chart.scale('出货', { max: max })
       this.$data.chart.changeData(chartData)
     } else {
       this.$data.chart.changeData([])

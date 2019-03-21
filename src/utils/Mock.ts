@@ -94,9 +94,9 @@ export default function () {
       actionName: '出货'
     })
   }
-  store.set('STAFF_LIST', STAFF_LIST)
-  store.set('ITEM_TYPE_LIST', ITEM_TYPE_LIST)
-  store.set('OPERATION_RECORD_LIST', OPERATION_RECORD_LIST)
+  store.set('STAFF_LIST', STAFF_LIST.reverse())
+  store.set('ITEM_TYPE_LIST', ITEM_TYPE_LIST.reverse())
+  store.set('OPERATION_RECORD_LIST', OPERATION_RECORD_LIST.reverse())
   store.set('LATELY_ID', 20)
   Notification.success({
     message: '已为您随机生成数据',
