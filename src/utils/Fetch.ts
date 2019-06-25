@@ -6,7 +6,7 @@ import { IRecord } from '@/declare.d.ts'
 
 export function itemTypeList () {
   let list = store.get('ITEM_TYPE_LIST').map((item: any) => item)
-  return list
+  return [...list.filter((item: any) => !item.name.includes('Delta')), ...list.filter((item: any) => item.name.includes('Delta'))]
 }
 
 export function staffList () {
@@ -17,7 +17,7 @@ export function staffList () {
 export function operationRecord () {
   let list = store.get('OPERATION_RECORD_LIST') || []
   list.map((item: IRecord) => {
-    return { ...item,num: item.num - 0 }
+    return { ...item, num: item.num - 0 }
   })
   list.reverse()
   return list
@@ -25,11 +25,11 @@ export function operationRecord () {
 
 // 筛选目标记录
 export function recordFilter ({
-  date = new Date(),
-  unit = 'month',
-  action = 'PIECE_RECORD',
-  staff = '',
-  type = ''
+    date = new Date(),
+    unit = 'month',
+    action = 'PIECE_RECORD',
+    staff = '',
+    type = ''
 }: any) {
   let list = store.get('OPERATION_RECORD_LIST')
   let targetMonthStart = dayjs(date).startOf(unit)
@@ -38,19 +38,19 @@ export function recordFilter ({
     const staffFilter = staff ? item.staff === staff : true
     const typeFilter = type ? item.type === type : true
     return (
-      dayjs(item.time).isAfter(targetMonthStart) &&
-      dayjs(item.time).isBefore(targetMonthEnd) &&
-      item.action === action && staffFilter && typeFilter
+            dayjs(item.time).isAfter(targetMonthStart) &&
+            dayjs(item.time).isBefore(targetMonthEnd) &&
+            item.action === action && staffFilter && typeFilter
     )
   })
   return result.map((item: IRecord) => {
-    return { ...item,num: item.num - 0 }
+    return { ...item, num: item.num - 0 }
   })
 }
 
 // 出货汇总
 export function exportSummary (date = new Date(), unit = 'month') {
-  // 数据初始化为0
+    // 数据初始化为0
   let exportSummary: any = []
   recordFilter({
     date,
@@ -58,16 +58,16 @@ export function exportSummary (date = new Date(), unit = 'month') {
     action: 'GOODS_EXPORT'
   }).forEach((item: IRecord) => {
     let targetIndex = exportSummary.findIndex(
-      (record: IRecord) => record.type === item.type
-    )
+            (record: IRecord) => record.type === item.type
+        )
     if (targetIndex === -1) {
       exportSummary.push({ type: item.type, num: 0 })
       targetIndex = exportSummary.findIndex((record: IRecord) => record.type === item.type)
     }
     exportSummary[targetIndex].num = NP.plus(
-      exportSummary[targetIndex].num || 0,
-      item.num
-    )
+            exportSummary[targetIndex].num || 0,
+            item.num
+        )
   })
 
   return exportSummary
