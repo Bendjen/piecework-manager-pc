@@ -63,18 +63,42 @@ export default class Employee extends Vue {
         unit: 'month',
         staff: item.name,
         action: 'PIECE_RECORD'
-      }).map((record: IRecord) => {
+      })
+      const totalSummary = staffRecord.map((record: IRecord) => {
         return {
           type: record.type,
           num: record.num,
           price: itemTypeList.find((type: IItemStaff) => type.name === record.type).price
         }
       })
-      const total = staffRecord.reduce((pre: any, cur: any) => vm.$NP.plus(pre, vm.$NP.times(cur.num, cur.price)), 0)
+      const staffSummary = staffRecord.filter((record: IRecord) => !record.type.includes('Delta')).map((record: IRecord) => {
+        return {
+          type: record.type,
+          num: record.num,
+          price: itemTypeList.find((type: IItemStaff) => type.name === record.type).price
+        }
+      })
+
+      const selfSummary = staffRecord.filter((record: IRecord) => record.type.includes('Delta')).map((record: IRecord) => {
+        return {
+          type: record.type,
+          num: record.num,
+          price: itemTypeList.find((type: IItemStaff) => type.name === record.type).price
+        }
+      })
+      const total = totalSummary.reduce((pre: any, cur: any) => vm.$NP.plus(pre, vm.$NP.times(cur.num, cur.price)), 0)
+      const staffPart = staffSummary.reduce((pre: any, cur: any) => vm.$NP.plus(pre, vm.$NP.times(cur.num, cur.price)), 0)
+      const selfPart = selfSummary.reduce((pre: any, cur: any) => vm.$NP.plus(pre, vm.$NP.times(cur.num, cur.price)), 0)
+      console.log(staffRecord)
+
       return {
         name: item.name,
-        detail: staffRecord,
-        total: total
+        detail: totalSummary,
+        detailStaff: staffSummary,
+        detailSelf: selfSummary,
+        total: total,
+        staffPart: staffPart,
+        selfPart: selfPart
       }
     })
     this.$data.salaryList = salaryList

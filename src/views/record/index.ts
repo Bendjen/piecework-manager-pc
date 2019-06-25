@@ -72,7 +72,8 @@ export default class PieceRecord extends Vue {
   }
   recordByTable (name: string, type: string, event: any) {
     const vm = this
-    Record.editRecord({ type: type, num: event.target.value, staff: name }).then(res => vm.freshTable()).catch(e => e)
+    // Record.editRecord({ type: type, num: event.target.value, staff: name }).then(res => vm.freshTable()).catch(e => e)
+    Record.wholeDayEdit({ type: type, num: event.target.value, staff: name }).then(res => vm.freshTable()).catch(e => e)
   }
   doCommand (event: any) {
     const vm = this

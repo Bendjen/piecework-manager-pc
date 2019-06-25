@@ -83,6 +83,8 @@
           <span>序号</span>
           <span>员工</span>
           <span>应发工资</span>
+          <span>实发工资</span>
+          <span>利润工资</span>
         </p>
         <p flex="main:justify cross:center" v-for="(item,index) in salaryList" :key="item.name">
           <span>{{index+1}}</span>
@@ -108,6 +110,52 @@
                 style="cursor:pointer"
                 flex="main:center cross:center"
               >{{item.total}}元</div>
+            </el-popover>
+          </span>
+          <span flex="main:center cross:center">
+            <el-popover popper-class="popper" placement="top-start" trigger="hover">
+              <div>
+                <p v-if="item.total !== 0">工资明细：{{item.name}}</p>
+                <div v-if="item.total !== 0">
+                  <p v-for="detail in item.detailStaff" :key="detail.type">
+                    <em class="type">{{detail.type}}:</em>
+                    <span>
+                      <em class="num">{{detail.price}} 元</em>*
+                      <em class="price">{{detail.num}} 件</em>=
+                      <em class="total">{{$NP.times(detail.price,detail.num)}} 元</em>
+                    </span>
+                  </p>
+                </div>
+                <p v-else>工资明细：无</p>
+              </div>
+              <div
+                slot="reference"
+                style="cursor:pointer"
+                flex="main:center cross:center"
+              >{{item.staffPart}}元</div>
+            </el-popover>
+          </span>
+          <span flex="main:center cross:center">
+            <el-popover popper-class="popper" placement="top-start" trigger="hover">
+              <div>
+                <p v-if="item.total !== 0">工资明细：{{item.name}}</p>
+                <div v-if="item.total !== 0">
+                  <p v-for="detail in item.detailSelf" :key="detail.type">
+                    <em class="type">{{detail.type}}:</em>
+                    <span>
+                      <em class="num">{{detail.price}} 元</em>*
+                      <em class="price">{{detail.num}} 件</em>=
+                      <em class="total">{{$NP.times(detail.price,detail.num)}} 元</em>
+                    </span>
+                  </p>
+                </div>
+                <p v-else>工资明细：无</p>
+              </div>
+              <div
+                slot="reference"
+                style="cursor:pointer"
+                flex="main:center cross:center"
+              >{{item.selfPart}}元</div>
             </el-popover>
           </span>
         </p>
